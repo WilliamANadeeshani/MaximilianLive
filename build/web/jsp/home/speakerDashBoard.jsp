@@ -1,25 +1,26 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@taglib uri="http://java.sun.com/jstl/core" prefix="core" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<c:set var="req" value="${pageContext.request}" />
+<c:set var="uri" value="${req.requestURI}" />
+<c:set var="url">${req.requestURL}</c:set>
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
 
-<html lang="en-US">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <html lang="en-US">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Maximilian Live System</title>
+            <title>Maximilian Live System</title>
+            <base href="${fn:substring(url, 0, fn:length(url) - fn:length(uri))}${req.contextPath}/" />
 
         <meta name="description" content="Demo of Material design portfolio template by TemplateFlip.com."/>
         <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;amp;lang=en" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" rel="stylesheet">
-        <spring:url value="/resources/core/css/main.css" var="coreCss"/>
-        <spring:url value="/resources/core/img" var="img" />
-        <link href="${coreCss}" rel="stylesheet">
-        <link href="${coreImg}" rel="stylesheet">
+        <link href="resources/css/main.css" rel="stylesheet">
     </head>
     <body id="top">
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -32,20 +33,20 @@
                 </div>
                 <div class="mdl-layout__header-row site-navigation-row mdl-layout--large-screen-only">
                     <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                        <a class="mdl-navigation__link" href="#">Home</a>
-                        <a class="mdl-navigation__link" href="home/about">About</a>
-                        <a class="mdl-navigation__link" href="#">Lecturer Login</a>
-                        <a class="mdl-navigation__link" href="#">Student Login</a>
+                        <a class="mdl-navigation__link" href="index.jsp">Home</a>
+                        <a class="mdl-navigation__link" href="jsp/home/about.jsp">About</a>
+                        <a class="mdl-navigation__link" href="jsp/home/speakerLogin.jsp">Lecturer Login</a>
+                        <a class="mdl-navigation__link" href="jsp/home/studentLogin.jsp">Student Login</a>
 
                     </nav>
                 </div>
             </header>
             <div class="mdl-layout__drawer mdl-layout--small-screen-only">
                 <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                    <a class="mdl-navigation__link" href="home/home">Home</a>
-                    <a class="mdl-navigation__link" href="#">About</a>
-                    <a class="mdl-navigation__link" href="#">Lecturer Login</a>
-                    <a class="mdl-navigation__link" href="#">Student Login</a>
+                    <a class="mdl-navigation__link" href="index.jsp">Home</a>
+                    <a class="mdl-navigation__link" href="jsp/home/about.jsp">About</a>
+                    <a class="mdl-navigation__link" href="jsp/home/speakerLogin.jsp">Lecturer Login</a>
+                    <a class="mdl-navigation__link" href="jsp/home/studentLogin.jsp">Student Login</a>
                 </nav>
             </div>
             <main class="mdl-layout__content">
@@ -53,39 +54,40 @@
                     <div class="container"><div class="mdl-grid site-max-width">
                             <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                                 <div class="mdl-card__media">
-                                    <img class="article-image" src="img/portfolio1.jpg" border="0" alt="">
+                                    <img class="article-image" src="resources/img/speakerDashBoard/accountDetails.jpg" border="0" alt="">
                                 </div>
                                 <div class="mdl-card__title">
                                     <h2 class="mdl-card__title-text">Account Details</h2>
                                 </div>
                                 <div class="mdl-card__supporting-text">
-                                    Now you can check your account Details.
+                                    Now you can check your account Details and change your personal information.
                                 </div><br>        
                                 <div class="mdl-card__actions mdl-card--border">
-                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio-page.html">
-                                        Learn More
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="jsp/speaker/accountDetails.jsp">
+                                        Your Profile
                                     </a>
                                 </div>
                             </div>
+                            
                             <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                                 <div class="mdl-card__media">
-                                    <img class="article-image" src="img/portfolio2.jpg" border="0" alt="">
+                                    <img class="article-image" src="resources/img/speakerDashBoard/eventDetails.jpg" border="0" alt="">
                                 </div>
                                 <div class="mdl-card__title">
-                                    <h2 class="mdl-card__title-text">Add Lecture Details</h2>
+                                    <h2 class="mdl-card__title-text">Event Details</h2>
                                 </div>
                                 <div class="mdl-card__supporting-text">
-                                    Here you can add your lecture information.
+                                    Here you can add your event information and your audience can view them.
                                 </div><br>        
                                 <div class="mdl-card__actions mdl-card--border">
-                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio-page.html">
-                                        Learn More
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="EventDetailsView">
+                                        Your Event
                                     </a>
                                 </div>
                             </div>
                             <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                                 <div class="mdl-card__media">
-                                    <img class="article-image" src="img/portfolio3.jpg" border="0" alt="">
+                                    <img class="article-image" src="resources/img/portfolio3.jpg" border="0" alt="">
                                 </div>
                                 <div class="mdl-card__title">
                                     <h2 class="mdl-card__title-text">Add Question</h2>
@@ -101,7 +103,7 @@
                             </div><br>
                             <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                                 <div class="mdl-card__media">
-                                    <img class="article-image" src="img/portfolio4.jpg" border="0" alt="">
+                                    <img class="article-image" src=".resources/img/portfolio4.jpg" border="0" alt="">
                                 </div>
                                 <div class="mdl-card__title">
                                     <h2 class="mdl-card__title-text">Feedback</h2>
@@ -117,7 +119,7 @@
                             </div><br>    
                             <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                                 <div class="mdl-card__media">
-                                    <img class="article-image" src="img/portfolio5.jpg" border="0" alt="">
+                                    <img class="article-image" src="resources/img/portfolio5.jpg" border="0" alt="">
                                 </div>
                                 <div class="mdl-card__title">
                                     <h2 class="mdl-card__title-text">Asked Questions</h2>
@@ -133,7 +135,7 @@
                             </div><br>    
                             <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                                 <div class="mdl-card__media">
-                                    <img class="article-image" src="img/portfolio6.jpg" border="0" alt="">
+                                    <img class="article-image" src="resources/img/portfolio6.jpg" border="0" alt="">
                                 </div>
                                 <div class="mdl-card__title">
                                     <h2 class="mdl-card__title-text">Student Marks</h2>

@@ -1,16 +1,22 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<c:set var="req" value="${pageContext.request}" />
+<c:set var="uri" value="${req.requestURI}" />
+<c:set var="url">${req.requestURL}</c:set>
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
 
-<html lang="en-US">
+    <html lang="en-US">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Maximilian Live System</title>
+            <title>Maximilian Live System</title>
 
-        <meta name="description" content="Demo of Material design portfolio template by TemplateFlip.com."/>
+            <meta name="description" content="Demo of Material design portfolio template by TemplateFlip.com."/>
+            <base href="${fn:substring(url, 0, fn:length(url) - fn:length(uri))}${req.contextPath}/" />
         <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;amp;lang=en" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" rel="stylesheet">
@@ -30,20 +36,21 @@
                     <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
                         <a class="mdl-navigation__link" href="index.jsp">Home</a>
                         <a class="mdl-navigation__link" href="jsp/home/about.jsp">About</a>
-                        <a class="mdl-navigation__link" href="jsp/home/speakerLogin">Lecturer Login</a>
-                        <a class="mdl-navigation__link" href="jsp/home/studentLogin">Student Login</a>
+                        <a class="mdl-navigation__link" href="jsp/home/speakerLogin.jsp">Lecturer Login</a>
+                        <a class="mdl-navigation__link" href="jsp/home/studentLogin.jsp">Student Login</a>
 
                     </nav>
                 </div>
+
+                <div class="mdl-layout__drawer mdl-layout--small-screen-only">
+                    <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+                        <a class="mdl-navigation__link" href="index.jsp">Home</a>
+                        <a class="mdl-navigation__link" href="jsp/home/about.jsp">About</a>
+                        <a class="mdl-navigation__link" href="jsp/home/speakerLogin.jsp">Lecturer Login</a>
+                        <a class="mdl-navigation__link" href="jsp/home/studentLogin.jsp">Student Login</a>
+                    </nav>
+                </div>
             </header>
-            <div class="mdl-layout__drawer mdl-layout--small-screen-only">
-                <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                    <a class="mdl-navigation__link" href="index.jsp">Home</a>
-                    <a class="mdl-navigation__link" href="jsp/home/about.jsp">About</a>
-                    <a class="mdl-navigation__link" href="jsp/home/speakerLogin">Lecturer Login</a>
-                    <a class="mdl-navigation__link" href="jsp/home/studentLogin">Student Login</a>
-                </nav>
-            </div>
             <main class="mdl-layout__content">
                 <div class="site-content">
                     <div class="container">
@@ -56,7 +63,7 @@
                                     Live Audience Engage and Interactive System. Click on "Getting Started" button below to register your event. 
                                 </div>
                                 <div class="mdl-card__actions mdl-card--border">
-                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="home/register" target="_blank">
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="jsp/home/registeration.jsp">
                                         Getting Started
                                     </a>
                                 </div>
