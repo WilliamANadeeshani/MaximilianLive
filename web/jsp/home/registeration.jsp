@@ -71,7 +71,6 @@
                                         <input path="password"  id="icon_prefix" type="text" class="validate" required name="email"/>
                                         <label for="icon_prefix" class="active">Email</label>
                                     </div>
-
                                     </p>
                                 </div>
                                 <div class="card-action center-align">

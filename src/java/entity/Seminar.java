@@ -1,10 +1,15 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Seminar implements Serializable {
@@ -16,7 +21,11 @@ public class Seminar implements Serializable {
     private String userName;
     private String password;
     private String email;
-
+    @OneToMany(mappedBy = "seminar")
+    private List<Mcq> mcq;
+    @OneToMany (mappedBy = "seminar")
+    private List<Question> question;
+    
     public String getUserName() {
         return userName;
     }
@@ -48,6 +57,24 @@ public class Seminar implements Serializable {
     public void setEventId(Long eventId) {
         this.eventId = eventId;
     }
+
+    public List<Mcq> getMcq() {
+        return mcq;
+    }
+
+    public void setMcq(List<Mcq> mcq) {
+        this.mcq = mcq;
+    }
+
+    public List<Question> getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(List<Question> question) {
+        this.question = question;
+    }
+
+    
 
     @Override
     public int hashCode() {

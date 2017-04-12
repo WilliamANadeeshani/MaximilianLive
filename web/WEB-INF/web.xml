@@ -16,6 +16,46 @@
         <servlet-name>EventDetailsView</servlet-name>
         <servlet-class>web.home.speaker.EventDetailsView</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddMcq</servlet-name>
+        <servlet-class>web.home.speaker.mcq.AddMcq</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewMcq</servlet-name>
+        <servlet-class>web.home.speaker.mcq.ViewMcq</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditMcq</servlet-name>
+        <servlet-class>web.home.speaker.mcq.EditMcq</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StudentLogin</servlet-name>
+        <servlet-class>web.home.StudentLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SpeakerLogin</servlet-name>
+        <servlet-class>web.home.SpeakerLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SeminarDetails</servlet-name>
+        <servlet-class>web.home.student.SeminarDetails</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginDetails</servlet-name>
+        <servlet-class>web.home.student.LoginDetails</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddQuestion</servlet-name>
+        <servlet-class>web.home.student.AddQuestion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Vote</servlet-name>
+        <servlet-class>web.home.student.Vote</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VoteCount</servlet-name>
+        <servlet-class>web.home.student.VoteCount</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -31,6 +71,46 @@
     <servlet-mapping>
         <servlet-name>EventDetailsView</servlet-name>
         <url-pattern>/EventDetailsView</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddMcq</servlet-name>
+        <url-pattern>/AddMcq</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewMcq</servlet-name>
+        <url-pattern>/ViewMcq</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditMcq</servlet-name>
+        <url-pattern>/EditMcq</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentLogin</servlet-name>
+        <url-pattern>/StudentLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SpeakerLogin</servlet-name>
+        <url-pattern>/SpeakerLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SeminarDetails</servlet-name>
+        <url-pattern>/SeminarDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginDetails</servlet-name>
+        <url-pattern>/LoginDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddQuestion</servlet-name>
+        <url-pattern>/AddQuestion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Vote</servlet-name>
+        <url-pattern>/Vote</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VoteCount</servlet-name>
+        <url-pattern>/VoteCount</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

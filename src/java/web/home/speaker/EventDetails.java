@@ -29,33 +29,37 @@ public class EventDetails extends HttpServlet {
             SessionFactory factory = new HibernateUtil().createSessionFactory();
             Session hibernateSession = factory.openSession();
             Transaction tx = hibernateSession.beginTransaction();
-            
+
             String eventName = request.getParameter("eventName");
             String lecturerName = request.getParameter("lecturerName");
             String lecturerDetails = request.getParameter("lecturerDetails");
             String date = request.getParameter("date");
             String time = request.getParameter("time");
             String place = request.getParameter("place");
-            
+
             HttpSession httpSession = request.getSession();
-            Seminar seminar = (Seminar)httpSession.getAttribute("seminar");
-            long eventId = seminar.getEventId();
-            
-            EventInformation eventInformation = (EventInformation) hibernateSession.get(EventInformation.class, eventId);
-            if (eventInformation==null) {
-                eventInformation = new EventInformation();
+            Seminar seminar = (Seminar) httpSession.getAttribute("seminar");
+            //check session is expired or not
+            if (seminar != null) {
+                long eventId = seminar.getEventId();
+
+                EventInformation eventInformation = (EventInformation) hibernateSession.get(EventInformation.class, eventId);
+                if (eventInformation == null) {
+                    eventInformation = new EventInformation();
+                }
+                eventInformation.setEventName(eventName);
+                eventInformation.setLecturerName(lecturerName);
+                eventInformation.setLecturerDetails(lecturerDetails);
+                eventInformation.setDate(date);
+                eventInformation.setTime(time);
+                eventInformation.setPlace(place);
+                eventInformation.setSeminar(seminar);
+
+                hibernateSession.saveOrUpdate(eventInformation);
+                tx.commit();
+                hibernateSession.close();
             }
-            eventInformation.setEventName(eventName);
-            eventInformation.setLecturerName(lecturerName);
-            eventInformation.setLecturerDetails(lecturerDetails);
-            eventInformation.setDate(date);
-            eventInformation.setTime(time);
-            eventInformation.setPlace(place);
-            eventInformation.setSeminar(seminar);
-            
-            hibernateSession.saveOrUpdate(eventInformation);
-            tx.commit();
-            hibernateSession.close();
+
         } finally {
             out.close();
         }

@@ -23,6 +23,12 @@
             main {
                 flex: 1 0 auto;
             }
+            input[type="text"][disabled] {
+                color: #004d40;
+            }
+            input[type="email"][disabled] {
+                color: #004d40;
+            }
         </style>
 
         <!--js-->
@@ -69,12 +75,15 @@
     <body class="indigo darken-1">
         <%
             Seminar seminar = (Seminar) session.getAttribute("seminar");
-            String userName = seminar.getUserName();
-            String email = seminar.getEmail();
-            String eventId = "" + seminar.getEventId();
-            pageContext.setAttribute("userName", userName);
-            pageContext.setAttribute("email", email);
-            pageContext.setAttribute("eventId", eventId);
+            if (seminar != null) {
+                String userName = seminar.getUserName();
+                String email = seminar.getEmail();
+                String eventId = "" + seminar.getEventId();
+                pageContext.setAttribute("userName", userName);
+                pageContext.setAttribute("email", email);
+                pageContext.setAttribute("eventId", eventId);
+            }
+
         %>
         <main>
             <nav class=" indigo darken-2" role="navigation">
@@ -119,7 +128,7 @@
                                         <label  for="icon_prefix" class="active" data-error="Use at most 10 characters" >User Name</label>
                                     </div>
                                     <div class="col s2">
-                                        <a class="btn-floating btn-large waves-effect waves-light red" onclick="document.getElementById('userName').disabled = false;
+                                        <a class="btn-floating btn-large waves-effect waves-light waves-purple" onclick="document.getElementById('userName').disabled = false;
                                                 visibleUpdateButton();"><i class="material-icons">mode_edit</i></a>
                                     </div>
                                 </div>
@@ -131,7 +140,7 @@
                                         <label  for="icon_prefix" class="active" data-error="Use valid email">Email</label>
                                     </div>
                                     <div class="col s2">
-                                        <a class="btn-floating btn-large waves-effect waves-light red" onclick="document.getElementById('email').disabled = false; visibleUpdateButton();"><i class="material-icons">mode_edit</i></a>
+                                        <a class="btn-floating btn-large waves-effect waves-light waves-purple" onclick="document.getElementById('email').disabled = false; visibleUpdateButton();"><i class="material-icons">mode_edit</i></a>
                                     </div>
                                 </div>
 

@@ -13,7 +13,7 @@
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <title>Maximilian Live System</title>
+            <title>Lecturer Dash Board</title>
             <base href="${fn:substring(url, 0, fn:length(url) - fn:length(uri))}${req.contextPath}/" />
 
         <meta name="description" content="Demo of Material design portfolio template by TemplateFlip.com."/>
@@ -28,7 +28,7 @@
                 <div class="mdl-layout__header-row site-logo-row">
                     <span class="mdl-layout__title">
                         <div class="site-logo"></div>
-                        <span class="site-description">Maximilian Live System</span>
+                        <span class="site-description">Lecturer Dash Board</span>
                     </span>
                 </div>
                 <div class="mdl-layout__header-row site-navigation-row mdl-layout--large-screen-only">
@@ -87,64 +87,64 @@
                             </div>
                             <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                                 <div class="mdl-card__media">
-                                    <img class="article-image" src="resources/img/portfolio3.jpg" border="0" alt="">
+                                    <img class="article-image" src="resources/img/speakerDashBoard/mcq.jpg" border="0" alt="">
                                 </div>
                                 <div class="mdl-card__title">
-                                    <h2 class="mdl-card__title-text">Add Question</h2>
+                                    <h2 class="mdl-card__title-text">MCQ</h2>
                                 </div>
                                 <div class="mdl-card__supporting-text">
-                                    Add your new question to measure your students' progress.
+                                    Add your new question to measure your students' progress. You can and Multiple Choice Questions..
                                 </div><br>        
                                 <div class="mdl-card__actions mdl-card--border">
-                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio-page.html">
-                                        Learn More
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="jsp/speaker/mcq.jsp">
+                                        Your Questions
                                     </a>
                                 </div>
-                            </div><br>
+                            </div>
                             <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                                 <div class="mdl-card__media">
-                                    <img class="article-image" src=".resources/img/portfolio4.jpg" border="0" alt="">
+                                    <img class="article-image" src="resources/img/feedback.jpg" border="0" alt="">
                                 </div>
                                 <div class="mdl-card__title">
                                     <h2 class="mdl-card__title-text">Feedback</h2>
                                 </div>
                                 <div class="mdl-card__supporting-text">
-                                    Now you can see you students' feedback.
+                                    Now you can see you students' feedback. It shows overall feedback with the percentage. 
                                 </div><br>        
                                 <div class="mdl-card__actions mdl-card--border">
-                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio-page.html">
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#">
                                         Learn More
                                     </a>
                                 </div>
                             </div><br>    
                             <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                                 <div class="mdl-card__media">
-                                    <img class="article-image" src="resources/img/portfolio5.jpg" border="0" alt="">
+                                    <img class="article-image" src="resources/img/qa.jpg" border="0" alt="">
                                 </div>
                                 <div class="mdl-card__title">
-                                    <h2 class="mdl-card__title-text">Asked Questions</h2>
+                                    <h2 class="mdl-card__title-text">Questions</h2>
                                 </div>
                                 <div class="mdl-card__supporting-text">
-                                    Try to give answers.
+                                    Now you can see, all the questions asked by your audience with number of votes.
                                 </div><br>        
                                 <div class="mdl-card__actions mdl-card--border">
-                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio-page.html">
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#">
                                         Learn More
                                     </a>
                                 </div>
                             </div><br>    
                             <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                                 <div class="mdl-card__media">
-                                    <img class="article-image" src="resources/img/portfolio6.jpg" border="0" alt="">
+                                    <img class="article-image" src="resources/img/pencil.jpg" border="0" alt="">
                                 </div>
                                 <div class="mdl-card__title">
                                     <h2 class="mdl-card__title-text">Student Marks</h2>
                                 </div>
                                 <div class="mdl-card__supporting-text">
-                                    Check students' performance
+                                    Now you can check your students' performance for your MCQ s with overall percentage. 
                                 </div><br>       
                                 <div class="mdl-card__actions mdl-card--border">
-                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="portfolio-page.html">
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#">
                                         Learn More
                                     </a>
                                 </div>

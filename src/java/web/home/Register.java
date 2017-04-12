@@ -30,6 +30,7 @@ public class Register extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            //create session factory
             SessionFactory factory = new HibernateUtil().createSessionFactory();
             Session hibernateSession = factory.openSession();
             Transaction tx = hibernateSession.beginTransaction();
@@ -38,6 +39,7 @@ public class Register extends HttpServlet {
             String email = request.getParameter("email");
             HttpSession httpSession = request.getSession();
             
+            //get seminar Id
             Seminar seminar = new Seminar();
             seminar.setUserName(username);
             seminar.setEmail(email);
@@ -45,6 +47,7 @@ public class Register extends HttpServlet {
             hibernateSession.saveOrUpdate(seminar);
             tx.commit();
             
+            //update database and request forward
             httpSession.setAttribute("seminar", seminar);
             RequestDispatcher rd = request.getRequestDispatcher("jsp/home/speakerDashBoard.jsp");
             rd.forward(request, response);
@@ -70,5 +73,12 @@ public class Register extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    public static double  eventCodeMultiply(double a, double b){
+        return a*b;
+    }
 
+     public static int  eventCodeRemainder(int a, int digit){
+        return a%digit;
+    }
 }

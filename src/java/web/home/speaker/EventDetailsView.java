@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package web.home.speaker;
 
 import config.HibernateUtil;
@@ -35,25 +34,30 @@ public class EventDetailsView extends HttpServlet {
             SessionFactory factory = new HibernateUtil().createSessionFactory();
             Session hibernateSession = factory.openSession();
             Transaction tx = hibernateSession.beginTransaction();
-            
+
             HttpSession httpSession = request.getSession();
-            Seminar seminar = (Seminar)httpSession.getAttribute("seminar");
-            long eventId = seminar.getEventId();
-            EventInformation eventInformation = (EventInformation) hibernateSession.get(EventInformation.class, eventId);
-            httpSession.setAttribute("eventInformation", eventInformation);
-            tx.commit();
+            Seminar seminar = (Seminar) httpSession.getAttribute("seminar");
+            //check sesson is expired or not
+            if (seminar != null) {
+                long eventId = seminar.getEventId();
+                EventInformation eventInformation = (EventInformation) hibernateSession.get(EventInformation.class, eventId);
+                httpSession.setAttribute("eventInformation", eventInformation);
+                tx.commit();
+                hibernateSession.close();
+            }
+            //request forward
             RequestDispatcher rd = request.getRequestDispatcher("jsp/speaker/eventDetails.jsp");
             rd.forward(request, response);
-            hibernateSession.close();
-            
+
         } finally {
             out.close();
         }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -61,12 +65,13 @@ public class EventDetailsView extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
-    } 
+    }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -74,11 +79,12 @@ public class EventDetailsView extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

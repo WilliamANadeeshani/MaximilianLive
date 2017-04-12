@@ -58,39 +58,32 @@
                             <div class="mdl-grid site-copy">
                                 <div class="mdl-cell mdl-cell--12-col"><h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline">Introduction</h3>
                                     <div class="mdl-cell mdl-cell--8-col mdl-card__supporting-text no-padding ">
-                                        <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
-                                        <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+                                        <p>This is an audience engage and interactive system, which provides interactive platform among speaker and any number of audience members. This system provides Q & A Platform, feedback interface, etc. and also this system helps to handle large number of audience by providing up vote system to the questions and entire details of a seminar. This project is mainly benefit for shy genius among the audience. Now no longer restricted by microphone and Everyone can now speak up using this system.</p>
+                                        <p></p>
                                     </div>
 
 
-                                    <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline">Mission</h3>
+                                    <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline">Guideline</h3>
                                     <div class="mdl-cell mdl-cell--8-col mdl-card__supporting-text no-padding ">
                                         <p>
-                                            Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
+                                          You just want to register with our system. Then we give event code and user name. Then your audience feel free to use our all functions while using your login details. 
                                         </p>
                                     </div>
 
 
-                                    <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline">Team</h3>
+                                    <h3 class="mdl-cell mdl-cell--12-col mdl-typography--headline"></h3>
 
                                     <div class="mdl-grid">
                                         <div class="mdl-cell mdl-cell--4-col">
                                             <div class="demo-card-image mdl-card mdl-shadow--2dp person1">
                                                 <div class="mdl-card__title mdl-card--expand"></div>
                                                 <div class="mdl-card__actions">
-                                                    <span class="demo-card-image__filename">John Doe</span>
+                                                    <span class="demo-card-image__filename">William A Nadeeshani</span>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="mdl-cell mdl-cell--4-col">
-                                            <div class="demo-card-image mdl-card mdl-shadow--2dp person2">
-                                                <div class="mdl-card__title mdl-card--expand"></div>
-                                                <div class="mdl-card__actions">
-                                                    <span class="demo-card-image__filename">Gary Doe</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
 
                                 </div>

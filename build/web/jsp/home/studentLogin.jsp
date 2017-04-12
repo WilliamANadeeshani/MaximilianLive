@@ -42,7 +42,7 @@
                     </ul>
                 </div>
             </nav>
-            <form action="#" modelAttribute="speaker">
+            <form action="StudentLogin" method="POST">
                 <div class="row">
                     <div class="col s4"></div>
                     <div class="row">
@@ -56,24 +56,20 @@
                                     <p>
                                     <div class="input-field row">
                                         <i class="material-icons prefix">account_circle</i>
-                                        <input  path="username" id="icon_prefix" type="text" class="validate"/>
+                                        <input  path="username" id="icon_prefix" type="text" class="validate" name="username" required/>
                                         <label for="icon_prefix">User Name</label>
                                     </div>
+                                    
                                     <div class="input-field row">
                                         <i class="material-icons prefix">lock_outline</i>
-                                        <input path="password"  id="icon_prefix" type="text" class="validate"/>
-                                        <label for="icon_prefix">Password</label>
-                                    </div>
-                                    <div class="input-field row">
-                                        <i class="material-icons prefix">lock_outline</i>
-                                        <input path="password"  id="icon_prefix" type="text" class="validate"/>
+                                        <input path="password"  id="icon_prefix" type="text" class="validate" name="eventCode" required/>
                                         <label for="icon_prefix">Event Code</label>
                                     </div>
 
                                     </p>
                                 </div>
                                 <div class="card-action center-align">
-                                    <button class="btn waves-effect waves-purple" type="submit" name="action">Login
+                                    <button class="btn waves-effect waves-purple" type="submit" name="action" >Login
                                         <i class="material-icons right">send</i>
                                     </button>
                                 </div>

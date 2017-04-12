@@ -42,7 +42,7 @@
                     </ul>
                 </div>
             </nav>
-            <form action="#" modelAttribute="speaker">
+            <form action="SpeakerLogin" method="POST">
                 <div class="row">
                     <div class="col s4"></div>
                     <div class="row">
@@ -56,17 +56,17 @@
                                     <p>
                                     <div class="input-field row">
                                         <i class="material-icons prefix">account_circle</i>
-                                        <input  path="username" id="icon_prefix" type="text" class="validate"/>
+                                        <input  path="username" id="icon_prefix" type="text" class="validate" name="userName" required/>
                                         <label for="icon_prefix">User Name</label>
                                     </div>
                                     <div class="input-field row">
                                         <i class="material-icons prefix">lock_outline</i>
-                                        <input path="password"  id="icon_prefix" type="text" class="validate"/>
+                                        <input path="password"  id="icon_prefix" type="password" class="validate" name="password" required/>
                                         <label for="icon_prefix">Password</label>
                                     </div>
                                     <div class="input-field row">
                                         <i class="material-icons prefix">lock_outline</i>
-                                        <input path="password"  id="icon_prefix" type="text" class="validate"/>
+                                        <input path="password"  id="icon_prefix" type="text" class="validate" name="eventCode" required/>
                                         <label for="icon_prefix">Event Code</label>
                                     </div>
 

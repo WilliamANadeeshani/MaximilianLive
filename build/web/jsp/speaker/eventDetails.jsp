@@ -24,6 +24,15 @@
             main {
                 flex: 1 0 auto;
             }
+            input[type="text"][disabled] {
+                color: #004d40;
+            }
+            input[type="date"][disabled] {
+                color: #004d40;
+            }
+            input[type="time"][disabled] {
+                color: #004d40;
+            }
         </style>
 
         <script>
@@ -110,12 +119,12 @@
                     <ul class="right hide-on-med-and-down">
                         <li><a href="jsp/home/speakerDashBoard.jsp">Dash Board</a></li>
                         <li><a href="jsp/home/about.jsp">About</a></li>
-                        <li><a href="jsp/speaker/eventDetails.jsp">Account</a></li>
+                        <li><a href="EventDetailsView">Event</a></li>
                     </ul>
                     <ul id="nav-mobile" class="side-nav">
                         <li><a href="jsp/home/speakerDashBoard.jsp">Dash Board</a></li>
                         <li><a href="jsp/home/about.jsp">About</a></li>
-                        <li><a href="jsp/speaker/eventDetails.jsp">Account</a></li>
+                        <li><a href="EventDetailsView">Event</a></li>
                     </ul>
                 </div>
             </nav>
@@ -138,7 +147,7 @@
                                         <input  disabled id="eventName" type='text'  class='validate' required name='eventName'  length="50" value="${pageScope.eventName}"/>
                                     </div>
                                     <div class="col s2">
-                                        <a class="btn-floating btn-large waves-effect waves-light red" onclick="document.getElementById('eventName').disabled = false;
+                                        <a class="btn-floating btn-large waves-effect waves-light waves-purple" onclick="document.getElementById('eventName').disabled = false;
                                                 visibleUpdateButton();"><i class="material-icons">mode_edit</i></a>
                                     </div>
                                 </div>
@@ -150,7 +159,7 @@
                                         <label  for="icon_prefix" class="active" data-error="Use at most 20 characters">Lecturer Name</label>
                                     </div>
                                     <div class="col s2">
-                                        <a class="btn-floating btn-large waves-effect waves-light red" onclick="document.getElementById('lecturerName').disabled = false; visibleUpdateButton();"><i class="material-icons">mode_edit</i></a>
+                                        <a class="btn-floating btn-large waves-effect waves-light waves-purple" onclick="document.getElementById('lecturerName').disabled = false; visibleUpdateButton();"><i class="material-icons">mode_edit</i></a>
                                     </div>
                                 </div>
 
@@ -161,29 +170,29 @@
                                         <label  for="icon_prefix" class="active">Lecturer Details</label>
                                     </div>
                                     <div class="col s2">
-                                        <a class="btn-floating btn-large waves-effect waves-light red" onclick="document.getElementById('lecturerDetails').disabled = false; visibleUpdateButton();"><i class="material-icons">mode_edit</i></a>
+                                        <a class="btn-floating btn-large waves-effect waves-light waves-purple" onclick="document.getElementById('lecturerDetails').disabled = false; visibleUpdateButton();"><i class="material-icons">mode_edit</i></a>
                                     </div>
                                 </div>
 
                                 <div class="input-field row">
                                     <div class="col s10">
-                                        <i class="material-icons prefix">subtitles</i>
+                                        <i class="material-icons prefix">today</i>
                                         <label  for="icon_prefix" class="active">Date</label>
                                         <input disabled  id="date" type="date" class="validate" required name="date" value="${pageScope.date}"/>
                                     </div>
                                     <div class="col s2">
-                                        <a class="btn-floating btn-large waves-effect waves-light red" onclick="document.getElementById('date').disabled = false; visibleUpdateButton();"><i class="material-icons">mode_edit</i></a>
+                                        <a class="btn-floating btn-large waves-effect waves-light waves-purple" onclick="document.getElementById('date').disabled = false; visibleUpdateButton();"><i class="material-icons">mode_edit</i></a>
                                     </div>
                                 </div>
 
                                 <div class="input-field row">
                                     <div class="col s10">
-                                        <i class="material-icons prefix">av_timer</i>
+                                        <i class="material-icons prefix">schedule</i>
                                         <label  for="icon_prefix" class="active">Time</label>
                                         <input disabled  id="time" type="time" class="validate" required name="time" value="${pageScope.time}"/>
                                     </div>
                                     <div class="col s2">
-                                        <a class="btn-floating btn-large waves-effect waves-light red" onclick="document.getElementById('time').disabled = false; visibleUpdateButton();"><i class="material-icons">mode_edit</i></a>
+                                        <a class="btn-floating btn-large waves-effect waves-light waves-purple" onclick="document.getElementById('time').disabled = false; visibleUpdateButton();"><i class="material-icons">mode_edit</i></a>
                                     </div>
                                 </div>
 
@@ -194,14 +203,14 @@
                                         <input  disabled id="place" type='text'  class='validate' required name='place'  length="50" value="${pageScope.place}"/>
                                     </div>
                                     <div class="col s2">
-                                        <a class="btn-floating btn-large waves-effect waves-light red" onclick="document.getElementById('place').disabled = false;
+                                        <a class="btn-floating btn-large waves-effect waves-light waves-purple" onclick="document.getElementById('place').disabled = false;
                                                 visibleUpdateButton();"><i class="material-icons">mode_edit</i></a>
                                     </div>
                                 </div>
                                 </p>
                             </div>
                             <div class="card-action center-align">
-                                <button id="update" onclick="sendRequest();" class="btn waves-effect waves-purple" type="submit" name="action" style="visibility: hidden">Update
+                                <button id="update" onclick="sendRequest();" class="btn waves-effect waves-purple" type="submit" name="action" style="visibility: hidden">Submit
                                 </button>
                             </div>
                         </div>

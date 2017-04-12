@@ -10,8 +10,12 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/maximilian_live?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.enable_lazy_load_no_trans">true</property>
+    
     <!--Mapping Classes-->
     <mapping class="entity.Seminar"/>
     <mapping class="entity.EventInformation"/>
+    <mapping class="entity.Mcq"/>
+     <mapping class="entity.Question"/>
   </session-factory>
 </hibernate-configuration>

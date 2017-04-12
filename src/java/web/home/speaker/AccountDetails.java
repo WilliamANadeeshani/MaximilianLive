@@ -28,17 +28,25 @@ public class AccountDetails extends HttpServlet {
             SessionFactory factory = new HibernateUtil().createSessionFactory();
             Session hibernateSession = factory.openSession();
             Transaction tx = hibernateSession.beginTransaction();
-            
+
             String userName = request.getParameter("userName");
             String email = request.getParameter("email");
-            
+
             HttpSession httpSession = request.getSession();
-            Seminar seminar = (Seminar)httpSession.getAttribute("seminar");
-            
-            seminar.setUserName(userName);
-            seminar.setEmail(email);
-            hibernateSession.saveOrUpdate(seminar);
-            tx.commit();
+            Seminar seminar = (Seminar) httpSession.getAttribute("seminar");
+            //check session is expired or not
+            if (seminar != null) {
+                seminar.setUserName(userName);
+                seminar.setEmail(email);
+                hibernateSession.saveOrUpdate(seminar);
+                tx.commit();
+            } else {
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Session is expired...Login Again...');");
+                out.println("location='jsp/home/speakerLogin.jsp';");
+                out.println("</script>");
+            }
+
             hibernateSession.close();
         } finally {
             out.close();
