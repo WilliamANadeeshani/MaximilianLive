@@ -64,7 +64,10 @@
                                 </div>
                                 <div class="mdl-card__actions mdl-card--border">
                                     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="jsp/home/registeration.jsp">
-                                        Getting Started
+                                        Lecturer Sign Up
+                                    </a>
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="jsp/home/studentRegisteration.jsp">
+                                        Student Sign Up
                                     </a>
                                 </div>
                             </div>

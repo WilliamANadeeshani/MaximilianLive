@@ -1,24 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
-/**
- *
- * @author William A Nadeeshani
- */
+
 @Entity
-public class Question implements Serializable {
+public class Question implements Serializable, Comparable{
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -28,7 +22,9 @@ public class Question implements Serializable {
     @ManyToOne
     private Seminar seminar;
     private int upVote;
-    
+    @OneToMany(mappedBy = "question")
+    private List<StudentVote> votedStudents;
+
     public Long getQuestionId() {
         return questionId;
     }
@@ -36,6 +32,8 @@ public class Question implements Serializable {
     public void setQuestionId(Long questionId) {
         this.questionId = questionId;
     }
+    
+   
 
     public String getQuestion() {
         return question;
@@ -61,6 +59,14 @@ public class Question implements Serializable {
         this.upVote = upVote;
     }
 
+    public List<StudentVote> getVotedQuesions() {
+        return votedStudents;
+    }
+
+    public void setVotedQuesions(List<StudentVote> votedQuesions) {
+        this.votedStudents = votedQuesions;
+    }
+
     
 
     @Override
@@ -73,7 +79,7 @@ public class Question implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Question)) {
+        if (!(object instanceof Long)) {
             return false;
         }
         Question other = (Question) object;
@@ -87,5 +93,11 @@ public class Question implements Serializable {
     public String toString() {
         return "entity.Question[ id=" + questionId + " ]";
     }
+
+    @Override
+    public int compareTo(Object compareQ) {
+        int compareage=((Question)compareQ).getUpVote();
+        return compareage-this.upVote;
+    }  
     
 }

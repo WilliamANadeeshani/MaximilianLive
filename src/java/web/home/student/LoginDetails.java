@@ -7,6 +7,7 @@ package web.home.student;
 
 import config.HibernateUtil;
 import entity.Seminar;
+import entity.Student;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -35,11 +36,21 @@ public class LoginDetails extends HttpServlet {
             Transaction tx = hibernateSession.beginTransaction();
             HttpSession httpSession = request.getSession();
             Seminar seminar = (Seminar) httpSession.getAttribute("seminar");
+            Student student = (Student) httpSession.getAttribute("student");
             //check session is expired or not
             if (seminar != null) {
                 request.setAttribute("seminar", seminar);
-                RequestDispatcher rd = request.getRequestDispatcher("jsp/student/loginDetails.jsp");
-                rd.forward(request, response);
+                if (student != null) {
+                    request.setAttribute("student", student);
+                    RequestDispatcher rd = request.getRequestDispatcher("jsp/student/loginDetails.jsp");
+                    rd.forward(request, response);
+                } else {
+                    out.println("<script type=\"text/javascript\">");
+                    out.println("alert('Session is expired...');");
+                    out.println("location='jsp/home/studentLogin.jsp';");
+                    out.println("</script>");
+                }
+
             } else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Session is expired...');");

@@ -32,7 +32,6 @@ public class SpeakerLogin extends HttpServlet {
             String username = request.getParameter("userName");
             String password = request.getParameter("password");
             String keyS = request.getParameter("eventCode");
-            System.out.println("userName:"+username+"password"+password+"eventCOde"+keyS);
             try {
                 //select sseminar from given id
                 Long key = Long.parseLong(keyS);

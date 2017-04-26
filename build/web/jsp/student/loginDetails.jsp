@@ -1,3 +1,4 @@
+<%@page import="entity.Student"%>
 <%@page import="entity.EventInformation"%>
 <%@page import="entity.Seminar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -38,13 +39,22 @@
     <body class="indigo darken-1">
         <%
             Seminar seminar = (Seminar) request.getAttribute("seminar");
+            Student student = (Student) request.getAttribute("student");
             if (seminar != null) {
                 String userName = seminar.getUserName();
                 Long eventCode = seminar.getEventId();
-                
+
                 pageContext.setAttribute("userName", userName);
                 pageContext.setAttribute("eventCode", eventCode);
             }
+            if (student != null) {
+                Long studentId = student.getStudentId();
+                String studentName = student.getUsername();
+                pageContext.setAttribute("studentId", studentId);
+                pageContext.setAttribute("studentName", studentName);
+
+            }
+
         %>
         <main>
             <nav class=" indigo darken-2" role="navigation">
@@ -77,7 +87,7 @@
                                 <div class="input-field row">
                                     <div class="col s10">
                                         <i class="material-icons prefix">picture_in_picture</i>
-                                        <label  for="icon_prefix" class="active" data-error="Use at most 50 characters">User Name</label>
+                                        <label  for="icon_prefix" class="active" data-error="Use at most 50 characters">Event Name</label>
                                         <input  disabled id="eventName" type='text' name='userName' value="${pageScope.userName}"/>
                                     </div>
                                 </div>
@@ -87,6 +97,22 @@
                                         <i class="material-icons prefix">vpn_key</i>
                                         <input disabled  id="lecturerName" type="text" name="lecturerName" value="${pageScope.eventCode}"/>
                                         <label  for="icon_prefix" class="active" data-error="Use at most 20 characters">Event Code</label>
+                                    </div>
+                                </div>
+
+                                <div class="input-field row">
+                                    <div class="col s10">
+                                        <i class="material-icons prefix">picture_in_picture</i>
+                                        <label  for="icon_prefix" class="active" data-error="Use at most 50 characters">User Name</label>
+                                        <input  disabled id="eventName" type='text' name='userName' value="${pageScope.studentName}"/>
+                                    </div>
+                                </div>
+
+                                <div class="input-field row">
+                                    <div class="col s10">
+                                        <i class="material-icons prefix">account_circle</i>
+                                        <input disabled  id="lecturerName" type="text" name="lecturerName" value="${pageScope.studentId}"/>
+                                        <label  for="icon_prefix" class="active" data-error="Use at most 20 characters">Student ID</label>
                                     </div>
                                 </div>
                                 </p>

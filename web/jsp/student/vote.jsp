@@ -37,32 +37,27 @@
                 }
                 return xmlhttp;
             }
-            function getId(x) {
-                var qId = x;
-            <% ArrayList<String[]> array = (ArrayList<String[]>) request.getAttribute("questionArray");
-            %>
-                var array = "<%=array%>";
 
-                var url = "VoteCount?qId=" + qId + "&array=" + array;
+            function updateVote(x) {
+                var qId = x;
+                var url = "VoteCount?qId=" + qId;
                 var request = createXMLHttpRequest();
                 request.open("GET", url, true);
                 request.send(null);
                 request.onreadystatechange = function () {
                     if (request.readyState == 4) {
                         if (request.status == 200) {
-                            alert("Your vote is added......");
-                            var output = request.responseText; // Get the server response as text
-                            document.getElementById('vote').innerHTML = output;
+                            var output = request.responseText;
+                            alert(output);
                         }
                     }
                 };
-
             }
-//            function getId(x) {
-//                return x;
-//            }
+
+
         </script>
     </head>
+
     <%
         ArrayList<String[]> questionArray = (ArrayList<String[]>) request.getAttribute("questionArray");
         if (questionArray != null) {
@@ -106,7 +101,7 @@
                                             <tr>
                                                 <td><c:out value="${question[0]}" /><td>
                                                 <td> 
-                                                    <button class="btn waves-effect waves-light"><i class="material-icons" onclick="getId(${loop.index})">thumb_up</i></button>
+                                                    <button class="btn waves-effect waves-light"><i class="material-icons" onclick="updateVote(${question[2]})">thumb_up</i></button>
                                                 </td>
                                                 <td id="vote"><c:out value="${question[1]}" /> </td>
                                             </tr>

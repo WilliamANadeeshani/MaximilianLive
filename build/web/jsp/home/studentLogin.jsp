@@ -56,16 +56,15 @@
                                     <p>
                                     <div class="input-field row">
                                         <i class="material-icons prefix">account_circle</i>
-                                        <input  path="username" id="icon_prefix" type="text" class="validate" name="username" required/>
-                                        <label for="icon_prefix">User Name</label>
-                                    </div>
-                                    
-                                    <div class="input-field row">
-                                        <i class="material-icons prefix">lock_outline</i>
-                                        <input path="password"  id="icon_prefix" type="text" class="validate" name="eventCode" required/>
-                                        <label for="icon_prefix">Event Code</label>
+                                        <input  path="username" id="icon_prefix" type="text" class="validate" name="studentId" required/>
+                                        <label for="icon_prefix">Student Id</label>
                                     </div>
 
+                                    <div class="input-field row">
+                                        <i class="material-icons prefix">lock_outline</i>
+                                        <input  path="username" id="icon_prefix" type="password" class="validate" name="password" required/>
+                                        <label for="icon_prefix">Password</label>
+                                    </div>
                                     </p>
                                 </div>
                                 <div class="card-action center-align">
@@ -89,7 +88,7 @@
         </footer>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> 
-</body>
+    </body>
 </html>
 
 

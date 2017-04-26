@@ -2,6 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/src/java/entity/StudentVote.java</file>
+            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/src/java/entity/Question.java</file>
+            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/src/java/entity/Student.java</file>
+            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/src/java/web/home/student/VoteCount.java</file>
+            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/src/java/entity/Seminar.java</file>
+        </group>
     </open-files>
 </project-private>

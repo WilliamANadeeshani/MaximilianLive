@@ -35,7 +35,7 @@ public class SeminarDetails extends HttpServlet {
                 if (eventInformation == null) {
                     out.println("<script type=\"text/javascript\">");
                     out.println("alert('Event details are still not added...');");
-                    out.println("location='index.jsp';");
+                    out.println("location='jsp/home/studentDashBoard.jsp';");
                     out.println("</script>");
                 } else {
                     request.setAttribute("eventInformation", eventInformation);

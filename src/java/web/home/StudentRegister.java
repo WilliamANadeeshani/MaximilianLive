@@ -1,14 +1,10 @@
-package web.home.student;
+package web.home;
 
 import config.HibernateUtil;
-import entity.Question;
 import entity.Seminar;
 import entity.Student;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,57 +15,62 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-/**
- *
- * @author William A Nadeeshani
- */
-public class Vote extends HttpServlet {
+public class StudentRegister extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            //create session factory
             SessionFactory factory = new HibernateUtil().createSessionFactory();
             Session hibernateSession = factory.openSession();
             Transaction tx = hibernateSession.beginTransaction();
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            String eventCode = request.getParameter("eventCode");
             HttpSession httpSession = request.getSession();
-            Seminar seminar = (Seminar) httpSession.getAttribute("seminar");
-            Student student = (Student) httpSession.getAttribute("student");
 
-            //check session is expired or not
-            if (seminar != null) {
-                if (student != null) {
-                    List<Question> questions = seminar.getQuestion();
-                    Collections.sort(questions);
-                    ArrayList<String[]> questionArray = new ArrayList<String[]>();
-                    for (Question q : questions) {
-                        String[] couple = new String[3];
-                        couple[0] = q.getQuestion();
-                        couple[1] = "" + q.getUpVote();
-                        couple[2] = "" + q.getQuestionId();
-                        questionArray.add(couple);
-                    }
-                    request.setAttribute("questionArray", questionArray);
-                    RequestDispatcher rd = request.getRequestDispatcher("jsp/student/vote.jsp");
+            //Check valid event code or not
+            try {
+                Long key = Long.parseLong(eventCode);
+                Seminar seminar = (Seminar) hibernateSession.get(Seminar.class, key);
+                if (seminar != null) {
+                    Student student = new Student();
+                    student.setUsername(username);
+                    student.setPassword(password);
+                    student.setSeminar(seminar);
+                    hibernateSession.saveOrUpdate(student);
+                    httpSession.setAttribute("seminar", seminar);
+                    httpSession.setAttribute("student", student);
+                    out.println("<script type=\"text/javascript\">");
+                    out.println("alert('Invalid Event Code ...');");
+                    out.println("location='jsp/home/studentRegisteration.jsp';");
+                    out.println("</script>");
+                    RequestDispatcher rd = request.getRequestDispatcher("jsp/home/studentDashBoard.jsp");
                     rd.forward(request, response);
+                    
+                    tx.commit();
+
                 } else {
                     out.println("<script type=\"text/javascript\">");
-                    out.println("alert('Session is expired...');");
-                    out.println("location='jsp/home/studentLogin.jsp';");
+                    out.println("alert('Invalid Event Code ...');");
+                    out.println("location='jsp/home/studentRegisteration.jsp';");
                     out.println("</script>");
                 }
-
-            } else {
+            } catch (Exception e) {
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('Session is expired...');");
-                out.println("location='jsp/home/studentLogin.jsp';");
+                out.println("alert('Invalid Event Code ...');");
+                out.println("location='jsp/home/studentRegisteration.jsp';");
                 out.println("</script>");
             }
-            tx.commit();
-            hibernateSession.close();
-
+            //update database and request forward
+//            httpSession.setAttribute("seminar", seminar);
+//            RequestDispatcher rd = request.getRequestDispatcher("jsp/home/speakerDashBoard.jsp");
+//            rd.forward(request, response);
+//            hibernateSession.close();
         } finally {
+            System.out.println("********************");
             out.close();
         }
     }
@@ -86,7 +87,6 @@ public class Vote extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**
@@ -100,6 +100,8 @@ public class Vote extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        processRequest(request, response);
+
     }
 
     /**

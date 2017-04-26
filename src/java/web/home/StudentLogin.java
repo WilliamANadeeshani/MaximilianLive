@@ -2,6 +2,7 @@ package web.home;
 
 import config.HibernateUtil;
 import entity.Seminar;
+import entity.Student;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -28,38 +29,46 @@ public class StudentLogin extends HttpServlet {
             SessionFactory factory = new HibernateUtil().createSessionFactory();
             Session hibernateSession = factory.openSession();
             Transaction tx = hibernateSession.beginTransaction();
-            String username = request.getParameter("username");
-            String keyS = request.getParameter("eventCode");
+            String studentId = request.getParameter("studentId");
+            String password = request.getParameter("password");
             try {
-                Long key = Long.parseLong(keyS);
-                Seminar seminar = (Seminar) hibernateSession.get(Seminar.class, key);
-                //check session is expired or not
-                if (seminar != null) {
-                    if (seminar.getUserName().equals(username)) {
-                        HttpSession httpSession = request.getSession();
-                        httpSession.setAttribute("seminar", seminar);
-                        RequestDispatcher rd = request.getRequestDispatcher("jsp/home/studentDashBoard.jsp");
-                        rd.forward(request, response);
-                        tx.commit();
+                Long key = Long.parseLong(studentId);
+                try {
+                    Student student = (Student) hibernateSession.get(Student.class, key);
+                    //check session is expired or not
+                    if (student != null) {
+                        if (student.getPassword().equals(password)) {
+                            HttpSession httpSession = request.getSession();
+                            httpSession.setAttribute("seminar", student.getSeminar());
+                            httpSession.setAttribute("student", student);
+                            RequestDispatcher rd = request.getRequestDispatcher("jsp/home/studentDashBoard.jsp");
+                            rd.forward(request, response);
+                            tx.commit();
+                        } else {
+                            out.println("<script type=\"text/javascript\">");
+                            out.println("alert('Invalid Password...');");
+                            out.println("location='jsp/home/studentLogin.jsp';");
+                            out.println("</script>");
+                        }
                     } else {
                         out.println("<script type=\"text/javascript\">");
-                        out.println("alert('Invalid User Name...');");
+                        out.println("alert('Invalid Login Details...');");
                         out.println("location='jsp/home/studentLogin.jsp';");
                         out.println("</script>");
                     }
-                } else {
+                } catch (Exception e) {
                     out.println("<script type=\"text/javascript\">");
                     out.println("alert('Invalid Event Code...');");
                     out.println("location='jsp/home/studentLogin.jsp';");
                     out.println("</script>");
+                } finally {
+                    hibernateSession.close();
                 }
             } catch (Exception e) {
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('Invalid Event Code...');");
+                out.println("alert('Invalid Student Id...');");
                 out.println("location='jsp/home/studentLogin.jsp';");
                 out.println("</script>");
-            } finally {
-                hibernateSession.close();
             }
         } finally {
             out.close();

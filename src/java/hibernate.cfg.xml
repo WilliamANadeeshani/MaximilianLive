@@ -16,6 +16,8 @@
     <mapping class="entity.Seminar"/>
     <mapping class="entity.EventInformation"/>
     <mapping class="entity.Mcq"/>
-     <mapping class="entity.Question"/>
+    <mapping class="entity.Question"/>
+    <mapping class="entity.Student"/>
+    <mapping class="entity.StudentVote"/>
   </session-factory>
 </hibernate-configuration>
