@@ -3,6 +3,7 @@ package web.home.student;
 import config.HibernateUtil;
 import entity.Question;
 import entity.Seminar;
+import entity.Student;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -21,36 +22,41 @@ public class AddQuestion extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-
             SessionFactory factory = new HibernateUtil().createSessionFactory();
             Session hibernateSession = factory.openSession();
+            
             Transaction tx = hibernateSession.beginTransaction();
             String quiz = request.getParameter("quiz");
             HttpSession httpSession = request.getSession();
             Seminar seminar = (Seminar) httpSession.getAttribute("seminar");
-
+            Student student = (Student)httpSession.getAttribute("student");
             //check session is expired or not
             if (seminar != null) {
                 Question question = new Question();
                 question.setSeminar(seminar);
                 question.setQuestion(quiz);
                 hibernateSession.saveOrUpdate(question);
+                hibernateSession.saveOrUpdate(seminar);
+                hibernateSession.saveOrUpdate(student);
                 tx.commit();
+                hibernateSession.flush();
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('Successfully Added TO the Database...');");
+                out.println("alert('Successfully Added To the Database...');");
                 out.println("location='jsp/student/addQuestion.jsp';");
                 out.println("</script>");
+                hibernateSession.close();
             } else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Session Is Expired...');");
                 out.println("location='jsp/home/studentLogin.jsp';");
                 out.println("</script>");
             }
-            hibernateSession.close();
         } finally {
             out.close();
+
         }
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

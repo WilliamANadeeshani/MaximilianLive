@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,8 +23,9 @@ public class Student implements Serializable {
     private String password;
     @ManyToOne
     private Seminar seminar;
-    @OneToMany(mappedBy = "student")
-    private List<StudentVote> votedQuesions;
+   
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
+    private List<StudentVote> votedQuesions = new ArrayList<StudentVote>();
 
     public Long getStudentId() {
         return studentId;
@@ -63,6 +65,10 @@ public class Student implements Serializable {
 
     public void setVotedQuesions(List<StudentVote> votedQuesions) {
         this.votedQuesions = votedQuesions;
+    }
+
+    public void addVotedQuestion(StudentVote sv){
+        this.votedQuesions.add(sv);
     }
 
     @Override

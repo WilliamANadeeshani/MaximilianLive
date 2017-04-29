@@ -97,7 +97,7 @@
                                     Now you can add your feedback about the event. Your identity will not be reviewed.
                                 </div><br>        
                                 <div class="mdl-card__actions mdl-card--border">
-                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#">
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="jsp/student/feedback.jsp">
                                         Learn More
                                     </a>
                                 </div>

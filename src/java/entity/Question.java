@@ -2,6 +2,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Question implements Serializable, Comparable{
     private Seminar seminar;
     private int upVote;
     @OneToMany(mappedBy = "question")
-    private List<StudentVote> votedStudents;
+    private List<StudentVote> votedStudents = new ArrayList<StudentVote>();
 
     public Long getQuestionId() {
         return questionId;
@@ -59,15 +60,19 @@ public class Question implements Serializable, Comparable{
         this.upVote = upVote;
     }
 
-    public List<StudentVote> getVotedQuesions() {
+    public List<StudentVote> getVotedStudents() {
         return votedStudents;
     }
 
-    public void setVotedQuesions(List<StudentVote> votedQuesions) {
-        this.votedStudents = votedQuesions;
+    public void setVotedStudents(List<StudentVote> votedStudents) {
+        this.votedStudents = votedStudents;
     }
 
     
+
+    public void addVotedQuestion(StudentVote sv){
+        this.votedStudents.add(sv);
+    }
 
     @Override
     public int hashCode() {

@@ -1,7 +1,5 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="entity.Question"%>
-<%@page import="entity.Seminar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -49,6 +47,7 @@
                         if (request.status == 200) {
                             var output = request.responseText;
                             alert(output);
+                            window.location.replace('Vote');
                         }
                     }
                 };
@@ -58,13 +57,7 @@
         </script>
     </head>
 
-    <%
-        ArrayList<String[]> questionArray = (ArrayList<String[]>) request.getAttribute("questionArray");
-        if (questionArray != null) {
-            pageContext.setAttribute("quizes", questionArray);
-        }
 
-    %>
     <body class="indigo darken-1">
 
         <main>
@@ -97,13 +90,13 @@
                                 <p>
                                 <table>
                                     <tbody>
-                                        <c:forEach items="${quizes}" var="question" varStatus="loop">
+                                        <c:forEach items="${questionArray}" var="question">
                                             <tr>
-                                                <td><c:out value="${question[0]}" /><td>
+                                                <td><c:out value="${question.getQuestion()}" /><td>
                                                 <td> 
-                                                    <button class="btn waves-effect waves-light"><i class="material-icons" onclick="updateVote(${question[2]})">thumb_up</i></button>
+                                                    <button class="btn waves-effect waves-light"><i class="material-icons" onclick="updateVote(${question.getQuestionId()})">thumb_up</i></button>
                                                 </td>
-                                                <td id="vote"><c:out value="${question[1]}" /> </td>
+                                                <td id="vote"><c:out value="${question.getUpVote()}" /> </td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>

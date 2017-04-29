@@ -1,15 +1,16 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Seminar implements Serializable {
@@ -23,9 +24,18 @@ public class Seminar implements Serializable {
     private String email;
     @OneToMany(mappedBy = "seminar")
     private List<Mcq> mcq;
-    @OneToMany (mappedBy = "seminar")
+
+    @OneToMany(mappedBy = "seminar", fetch = FetchType.EAGER)
     private List<Question> question;
-    
+
+    public Long getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(Long eventId) {
+        this.eventId = eventId;
+    }
+
     public String getUserName() {
         return userName;
     }
@@ -48,14 +58,6 @@ public class Seminar implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Long getEventId() {
-        return eventId;
-    }
-
-    public void setEventId(Long eventId) {
-        this.eventId = eventId;
     }
 
     public List<Mcq> getMcq() {

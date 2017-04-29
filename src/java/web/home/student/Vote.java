@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -36,23 +38,23 @@ public class Vote extends HttpServlet {
             HttpSession httpSession = request.getSession();
             Seminar seminar = (Seminar) httpSession.getAttribute("seminar");
             Student student = (Student) httpSession.getAttribute("student");
-
             //check session is expired or not
             if (seminar != null) {
                 if (student != null) {
-                    List<Question> questions = seminar.getQuestion();
-                    Collections.sort(questions);
-                    ArrayList<String[]> questionArray = new ArrayList<String[]>();
-                    for (Question q : questions) {
-                        String[] couple = new String[3];
-                        couple[0] = q.getQuestion();
-                        couple[1] = "" + q.getUpVote();
-                        couple[2] = "" + q.getQuestionId();
-                        questionArray.add(couple);
+                    List list = hibernateSession.createCriteria(Question.class).list();
+                    List <Question> questionArray = new ArrayList<Question>();
+                    for (Object o:list) {
+                        Question q = (Question)o;
+                        if (q.getSeminar().getEventId().equals( seminar.getEventId())) {
+                            questionArray.add(q);
+                        }
                     }
+                    Collections.sort(questionArray);
                     request.setAttribute("questionArray", questionArray);
                     RequestDispatcher rd = request.getRequestDispatcher("jsp/student/vote.jsp");
                     rd.forward(request, response);
+                    tx.commit();
+                    hibernateSession.close();
                 } else {
                     out.println("<script type=\"text/javascript\">");
                     out.println("alert('Session is expired...');");
@@ -66,8 +68,7 @@ public class Vote extends HttpServlet {
                 out.println("location='jsp/home/studentLogin.jsp';");
                 out.println("</script>");
             }
-            tx.commit();
-            hibernateSession.close();
+            
 
         } finally {
             out.close();
