@@ -19,5 +19,6 @@
         <mapping class="entity.Question"/>
         <mapping class="entity.Student"/>
         <mapping class="entity.StudentVote"/>
+        <mapping class="entity.Feedback" />
     </session-factory>
 </hibernate-configuration>

@@ -1,4 +1,3 @@
-
 package web.home.speaker.mcq;
 
 import config.HibernateUtil;
@@ -48,25 +47,31 @@ public class AddMcq extends HttpServlet {
             String ans_correct = request.getParameter("ans_correct");
             HttpSession httpSession = request.getSession();
             Seminar seminar = (Seminar) httpSession.getAttribute("seminar");
+            if (seminar != null) {
+                //create new mcq object
+                Mcq mcq = new Mcq();
+                mcq.setQuestion(question);
+                mcq.setSeminar(seminar);
+                mcq.setAns_a(a);
+                mcq.setAns_b(b);
+                mcq.setAns_c(c);
+                mcq.setAns_d(d);
+                mcq.setAns_correct(ans_correct);
+                //save update
+                hibernateSession.saveOrUpdate(mcq);
+                tx.commit();
+                hibernateSession.close();
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Sucessfully  added to the database...');");
+                out.println("location='jsp/speaker/mcq.jsp';");
+                out.println("</script>");
+            } else {
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Session is expired...Login Again...');");
+                out.println("location='jsp/home/speakerLogin.jsp';");
+                out.println("</script>");
+            }
 
-            //create new mcq object
-            Mcq mcq = new Mcq();
-            mcq.setQuestion(question);
-            mcq.setSeminar(seminar);
-            mcq.setAns_a(a);
-            mcq.setAns_b(b);
-            mcq.setAns_c(c);
-            mcq.setAns_d(d);
-            mcq.setAns_correct(ans_correct);
-
-            //save update
-            hibernateSession.saveOrUpdate(mcq);
-            tx.commit();
-            hibernateSession.close();
-            out.println("<script type=\"text/javascript\">");
-            out.println("alert('Sucessfully  added to the database...');");
-            out.println("location='jsp/speaker/mcq.jsp';");
-            out.println("</script>");
         } finally {
             out.close();
         }

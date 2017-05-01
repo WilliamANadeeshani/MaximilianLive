@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package web.home.speaker;
+package web.home.student;
 
 import config.HibernateUtil;
-import entity.EventInformation;
+import entity.Feedback;
 import entity.Seminar;
+import entity.Student;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -24,7 +20,7 @@ import org.hibernate.Transaction;
  *
  * @author William A Nadeeshani
  */
-public class EventDetailsView extends HttpServlet {
+public class ViewFeedback extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -37,23 +33,19 @@ public class EventDetailsView extends HttpServlet {
 
             HttpSession httpSession = request.getSession();
             Seminar seminar = (Seminar) httpSession.getAttribute("seminar");
-            //check sesson is expired or not
-            if (seminar != null) {
-                long eventId = seminar.getEventId();
-                EventInformation eventInformation = (EventInformation) hibernateSession.get(EventInformation.class, eventId);
-                httpSession.setAttribute("eventInformation", eventInformation);
+            Student student = (Student) httpSession.getAttribute("student");
+
+            if (student != null && seminar != null) {
+                Feedback feedback = student.getFeedback();
+                httpSession.setAttribute("feedback", feedback);
                 tx.commit();
                 hibernateSession.close();
-                //request forward
-                RequestDispatcher rd = request.getRequestDispatcher("jsp/speaker/eventDetails.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("jsp/student/feedback.jsp");
                 rd.forward(request, response);
             } else {
-                //request forward
-                RequestDispatcher rd = request.getRequestDispatcher("jsp/home/speakerLogin.jsp");
-                rd.forward(request, response);
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('Session is expired...Login Again...');");
-                out.println("location='jsp/home/speakerLogin.jsp';");
+                out.println("alert('Session Is Expired...');");
+                out.println("location='jsp/home/studentLogin.jsp';");
                 out.println("</script>");
             }
 

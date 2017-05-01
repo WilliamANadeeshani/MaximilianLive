@@ -21,14 +21,6 @@
         <servlet-class>web.home.speaker.mcq.AddMcq</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ViewMcq</servlet-name>
-        <servlet-class>web.home.speaker.mcq.ViewMcq</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>EditMcq</servlet-name>
-        <servlet-class>web.home.speaker.mcq.EditMcq</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>StudentLogin</servlet-name>
         <servlet-class>web.home.StudentLogin</servlet-class>
     </servlet>
@@ -60,6 +52,26 @@
         <servlet-name>StudentRegister</servlet-name>
         <servlet-class>web.home.StudentRegister</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddFeedback</servlet-name>
+        <servlet-class>web.home.student.AddFeedback</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewFeedback</servlet-name>
+        <servlet-class>web.home.student.ViewFeedback</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewAllMcq</servlet-name>
+        <servlet-class>web.home.speaker.mcq.ViewAllMcq</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateMcqPageView</servlet-name>
+        <servlet-class>web.home.speaker.mcq.UpdateMcqPageView</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateMcq</servlet-name>
+        <servlet-class>web.home.speaker.mcq.UpdateMcq</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -79,14 +91,6 @@
     <servlet-mapping>
         <servlet-name>AddMcq</servlet-name>
         <url-pattern>/AddMcq</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ViewMcq</servlet-name>
-        <url-pattern>/ViewMcq</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditMcq</servlet-name>
-        <url-pattern>/EditMcq</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>StudentLogin</servlet-name>
@@ -119,6 +123,26 @@
     <servlet-mapping>
         <servlet-name>StudentRegister</servlet-name>
         <url-pattern>/StudentRegister</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddFeedback</servlet-name>
+        <url-pattern>/AddFeedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewFeedback</servlet-name>
+        <url-pattern>/ViewFeedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAllMcq</servlet-name>
+        <url-pattern>/ViewAllMcq</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateMcqPageView</servlet-name>
+        <url-pattern>/UpdateMcqPageView</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateMcq</servlet-name>
+        <url-pattern>/UpdateMcq</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

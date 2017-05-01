@@ -96,7 +96,7 @@
                                     Add your new question to measure your students' progress. You can and Multiple Choice Questions..
                                 </div><br>        
                                 <div class="mdl-card__actions mdl-card--border">
-                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="jsp/speaker/mcq.jsp">
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="jsp/speaker/mcqDashBoard.jsp">
                                         Your Questions
                                     </a>
                                 </div>
@@ -128,7 +128,7 @@
                                     Now you can see, all the questions asked by your audience with number of votes.
                                 </div><br>        
                                 <div class="mdl-card__actions mdl-card--border">
-                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#">
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="Vote">
                                         Learn More
                                     </a>
                                 </div>

@@ -27,8 +27,9 @@
             $(document).ready(function () {
                 $('select').material_select();
             });
-            
+
         </script>
+        
     </head>
     <body class="indigo darken-1">
         <main>
@@ -36,12 +37,12 @@
                 <div class="nav-wrapper container">
                     <a id="logo-container" href="#" class="brand-logo">Your Questions</a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="jsp/home/speakerDashBoard.jsp">Dash Board</a></li>
+                        <li><a href="jsp/speaker/mcqDashBoard.jsp">Dash Board</a></li>
                         <li><a href="jsp/home/about.jsp">About</a></li>
                         <li><a href="jsp/speaker/mcq.jsp">MCQ</a></li>
                     </ul>
                     <ul id="nav-mobile" class="side-nav">
-                        <li><a href="jsp/home/speakerDashBoard.jsp">Dash Board</a></li>
+                        <li><a href="jsp/speaker/mcqDashBoard.jsp">Dash Board</a></li>
                         <li><a href="jsp/home/about.jsp">About</a></li>
                         <li><a href="jsp/speaker/mcq.jsp">MCQ</a></li>
                     </ul>
@@ -59,18 +60,7 @@
                             </div>
                             <div class="card-content">
                                 <p>
-
                                 <div class="row">
-                                    <div class="col s12">
-                                        <ul class="tabs ">
-                                            <li class="tab col s3"><a href="#add">Add</a></li>
-                                            <li class="tab col s3"><a href="#view">View</a></li>
-                                            <li class="tab col s3"><a href="#edit">Edit</a></li>
-                                            <li class="tab col s3"><a href="#result">Result</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <!--Add Form-->
                                     <div id="add" class="col s12">
                                         <form action="AddMcq" method="POST">
                                             <div class="input-field row">
@@ -108,24 +98,12 @@
                                                 </select>
                                             </div>
                                             <div class="card-action center-align">
-                                                <button class="btn waves-effect waves-purple" type="submit" name="action">Added Questions
-                                                    <i class="material-icons right">send</i>
+                                                <button class="btn waves-effect waves-purple" type="submit" name="action">Submit
                                                 </button>
                                             </div>
                                         </form>
                                     </div>
-
-                                    <!--Edit Form-->
-                                    <div id="view" class="col s12">
-                                        <br><br>
-                                        <button class="btn waves-effect waves-purple" type="submit" name="action" onclick="veiwQuestions">Added Questions
-                                            <i class="material-icons right"></i>
-                                        </button>
-                                    </div>
-                                    <div id="edit" class="col s12">Test 3</div>
-                                    <div id="result" class="col s12">Test 4</div>
                                 </div>
-
                             </div>
                         </div>
                     </div>

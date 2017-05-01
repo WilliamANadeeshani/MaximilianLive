@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package web.home.speaker;
+package web.home.speaker.mcq;
 
 import config.HibernateUtil;
-import entity.EventInformation;
+import entity.Mcq;
 import entity.Seminar;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +21,7 @@ import org.hibernate.Transaction;
  *
  * @author William A Nadeeshani
  */
-public class EventDetailsView extends HttpServlet {
+public class ViewAllMcq extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -39,13 +36,18 @@ public class EventDetailsView extends HttpServlet {
             Seminar seminar = (Seminar) httpSession.getAttribute("seminar");
             //check sesson is expired or not
             if (seminar != null) {
-                long eventId = seminar.getEventId();
-                EventInformation eventInformation = (EventInformation) hibernateSession.get(EventInformation.class, eventId);
-                httpSession.setAttribute("eventInformation", eventInformation);
+                List list = hibernateSession.createCriteria(Mcq.class).list();
+                    List <Mcq> mcqArray = new ArrayList<Mcq>();
+                    for (Object o:list) {
+                        Mcq m = (Mcq)o;
+                        if (m.getSeminar().getEventId().equals( seminar.getEventId())) {
+                            mcqArray.add(m);
+                        }
+                    }
+                httpSession.setAttribute("mcq", mcqArray);
                 tx.commit();
                 hibernateSession.close();
-                //request forward
-                RequestDispatcher rd = request.getRequestDispatcher("jsp/speaker/eventDetails.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("jsp/speaker/allMcqView.jsp");
                 rd.forward(request, response);
             } else {
                 //request forward
@@ -56,7 +58,6 @@ public class EventDetailsView extends HttpServlet {
                 out.println("location='jsp/home/speakerLogin.jsp';");
                 out.println("</script>");
             }
-
         } finally {
             out.close();
         }

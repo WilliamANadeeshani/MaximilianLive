@@ -58,6 +58,12 @@ public class EventDetails extends HttpServlet {
                 hibernateSession.saveOrUpdate(eventInformation);
                 tx.commit();
                 hibernateSession.close();
+                
+            } else {
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Session is expired...Login Again...');");
+                out.println("location='jsp/home/speakerLogin.jsp';");
+                out.println("</script>");
             }
 
         } finally {

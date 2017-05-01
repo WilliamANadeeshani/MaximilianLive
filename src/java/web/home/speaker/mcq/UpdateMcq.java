@@ -1,16 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package web.home.speaker;
+package web.home.speaker.mcq;
 
 import config.HibernateUtil;
-import entity.EventInformation;
+import entity.Mcq;
 import entity.Seminar;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,39 +18,42 @@ import org.hibernate.Transaction;
  *
  * @author William A Nadeeshani
  */
-public class EventDetailsView extends HttpServlet {
+public class UpdateMcq extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+            String question = request.getParameter("question");
+            String a = request.getParameter("a");
+            String b = request.getParameter("b");
+            String c = request.getParameter("c");
+            String d = request.getParameter("d");
+            String ans_correct = request.getParameter("ans");
+            long id = Long.parseLong(request.getParameter("mcqId"));
             SessionFactory factory = new HibernateUtil().createSessionFactory();
             Session hibernateSession = factory.openSession();
             Transaction tx = hibernateSession.beginTransaction();
-
             HttpSession httpSession = request.getSession();
             Seminar seminar = (Seminar) httpSession.getAttribute("seminar");
-            //check sesson is expired or not
             if (seminar != null) {
-                long eventId = seminar.getEventId();
-                EventInformation eventInformation = (EventInformation) hibernateSession.get(EventInformation.class, eventId);
-                httpSession.setAttribute("eventInformation", eventInformation);
+                Mcq mcq = (Mcq) hibernateSession.get(Mcq.class, id);
+                mcq.setAns_a(a);
+                mcq.setAns_b(b);
+                mcq.setAns_c(c);
+                mcq.setAns_d(d);
+                mcq.setAns_correct(ans_correct);
+                mcq.setQuestion(question);
+                hibernateSession.saveOrUpdate(mcq);
                 tx.commit();
                 hibernateSession.close();
-                //request forward
-                RequestDispatcher rd = request.getRequestDispatcher("jsp/speaker/eventDetails.jsp");
-                rd.forward(request, response);
             } else {
-                //request forward
-                RequestDispatcher rd = request.getRequestDispatcher("jsp/home/speakerLogin.jsp");
-                rd.forward(request, response);
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Session is expired...Login Again...');");
                 out.println("location='jsp/home/speakerLogin.jsp';");
                 out.println("</script>");
             }
-
         } finally {
             out.close();
         }

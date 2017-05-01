@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Student implements Serializable {
@@ -23,10 +24,11 @@ public class Student implements Serializable {
     private String password;
     @ManyToOne
     private Seminar seminar;
-   
     @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
     private List<StudentVote> votedQuesions = new ArrayList<StudentVote>();
-
+    @OneToOne (mappedBy = "student")
+    private Feedback feedback;
+    
     public Long getStudentId() {
         return studentId;
     }
@@ -71,6 +73,15 @@ public class Student implements Serializable {
         this.votedQuesions.add(sv);
     }
 
+    public Feedback getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(Feedback feedback) {
+        this.feedback = feedback;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 0;

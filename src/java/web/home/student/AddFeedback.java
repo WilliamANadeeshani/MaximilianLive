@@ -3,52 +3,66 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package web.home.student;
 
-package web.home.speaker.mcq;
-
+import config.HibernateUtil;
+import entity.Feedback;
+import entity.Seminar;
+import entity.Student;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 /**
  *
  * @author William A Nadeeshani
  */
-public class ViewMcq extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+public class AddFeedback extends HttpServlet {
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ViewMcq</title>");  
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ViewMcq at " + request.getContextPath () + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            SessionFactory factory = new HibernateUtil().createSessionFactory();
+            Session hibernateSession = factory.openSession();
+            Transaction tx = hibernateSession.beginTransaction();
+
+            String feedbackString = request.getParameter("feedback");
+            String face = request.getParameter("face");
+            HttpSession httpSession = request.getSession();
+            Seminar seminar = (Seminar) httpSession.getAttribute("seminar");
+            Student student = (Student) httpSession.getAttribute("student");
+
+            //check session is expired or not
+            if (seminar != null && student != null) {
+                Feedback feedback = student.getFeedback();
+                if (feedback == null) {
+                    feedback = new Feedback();
+                }
+                feedback.setFeedback(feedbackString);
+                feedback.setFaceType(face);
+                feedback.setStudent(student);
+                hibernateSession.saveOrUpdate(feedback);
+                tx.commit();
+                hibernateSession.close();
+            }
         } finally {
             out.close();
         }
-    } 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -56,12 +70,13 @@ public class ViewMcq extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
-    } 
+    }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -69,11 +84,12 @@ public class ViewMcq extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

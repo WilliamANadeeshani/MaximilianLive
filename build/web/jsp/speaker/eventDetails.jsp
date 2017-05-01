@@ -87,6 +87,7 @@
                             document.getElementById('time').disabled = true;
                             document.getElementById('place').disabled = true;
                             document.getElementById('update').style.visibility = "hidden";
+                            alert("Successfully added to the database...");
                         }
                     }
                 };

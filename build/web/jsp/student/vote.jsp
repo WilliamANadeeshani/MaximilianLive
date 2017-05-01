@@ -56,10 +56,7 @@
 
         </script>
     </head>
-
-
     <body class="indigo darken-1">
-
         <main>
             <nav class=" indigo darken-2" role="navigation">
                 <div class="nav-wrapper container">
