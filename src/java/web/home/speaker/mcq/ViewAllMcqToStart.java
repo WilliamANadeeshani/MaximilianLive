@@ -5,6 +5,9 @@ import entity.Mcq;
 import entity.Seminar;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,17 +21,8 @@ import org.hibernate.Transaction;
  *
  * @author William A Nadeeshani
  */
-public class AddMcq extends HttpServlet {
+public class ViewAllMcqToStart extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -38,40 +32,32 @@ public class AddMcq extends HttpServlet {
             Session hibernateSession = factory.openSession();
             Transaction tx = hibernateSession.beginTransaction();
 
-            // Asign request parameters
-            String question = request.getParameter("question");
-            String a = request.getParameter("a");
-            String b = request.getParameter("b");
-            String c = request.getParameter("c");
-            String d = request.getParameter("d");
-            String ans_correct = request.getParameter("ans_correct");
             HttpSession httpSession = request.getSession();
             Seminar seminar = (Seminar) httpSession.getAttribute("seminar");
+            //check sesson is expired or not
             if (seminar != null) {
-                //create new mcq object
-                Mcq mcq = new Mcq();
-                mcq.setQuestion(question);
-                mcq.setSeminar(seminar);
-                mcq.setAns_a(a);
-                mcq.setAns_b(b);
-                mcq.setAns_c(c);
-                mcq.setAns_d(d);
-                mcq.setAns_correct(ans_correct);
-                //save update
-                hibernateSession.saveOrUpdate(mcq);
+                List list = hibernateSession.createCriteria(Mcq.class).list();
+                List<Mcq> mcqArray = new ArrayList<Mcq>();
+                for (Object o : list) {
+                    Mcq m = (Mcq) o;
+                    if (m.getSeminar().getEventId().equals(seminar.getEventId())) {
+                        mcqArray.add(m);
+                    }
+                }
+                httpSession.setAttribute("mcq", mcqArray);
                 tx.commit();
                 hibernateSession.close();
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('Sucessfully  added to the database...');");
-                out.println("location='jsp/speaker/addMcq.jsp';");
-                out.println("</script>");
+                RequestDispatcher rd = request.getRequestDispatcher("jsp/speaker/allMcqViewToStart.jsp");
+                rd.forward(request, response);
             } else {
+                //request forward
+                RequestDispatcher rd = request.getRequestDispatcher("jsp/home/speakerLogin.jsp");
+                rd.forward(request, response);
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Session is expired...Login Again...');");
                 out.println("location='jsp/home/speakerLogin.jsp';");
                 out.println("</script>");
             }
-
         } finally {
             out.close();
         }
@@ -89,7 +75,7 @@ public class AddMcq extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        processRequest(request, response);
     }
 
     /**
@@ -103,7 +89,6 @@ public class AddMcq extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**

@@ -72,6 +72,18 @@
         <servlet-name>UpdateMcq</servlet-name>
         <servlet-class>web.home.speaker.mcq.UpdateMcq</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewAllMcqToStart</servlet-name>
+        <servlet-class>web.home.speaker.mcq.ViewAllMcqToStart</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SetTime</servlet-name>
+        <servlet-class>web.home.speaker.mcq.SetTime</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SetTimePageView</servlet-name>
+        <servlet-class>web.home.speaker.mcq.SetTimePageView</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -143,6 +155,18 @@
     <servlet-mapping>
         <servlet-name>UpdateMcq</servlet-name>
         <url-pattern>/UpdateMcq</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAllMcqToStart</servlet-name>
+        <url-pattern>/ViewAllMcqToStart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SetTime</servlet-name>
+        <url-pattern>/SetTime</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SetTimePageView</servlet-name>
+        <url-pattern>/SetTimePageView</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

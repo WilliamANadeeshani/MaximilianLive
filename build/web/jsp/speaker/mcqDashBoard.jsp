@@ -85,11 +85,11 @@
                                 <h5 class="mdl-card__title-text">Start </h5>
                             </div>
                             <div class="mdl-card__supporting-text">
-                                Now you can check your account Details and change your personal information.
+                                Now you can display your added question to the audience and set time duration to the question.
                             </div><br>        
                             <div class="mdl-card__actions mdl-card--border">
-                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="jsp/speaker/accountDetails.jsp">
-                                    Your Profile
+                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="ViewAllMcqToStart">
+                                    Add Time
                                 </a>
                             </div>
                         </div>

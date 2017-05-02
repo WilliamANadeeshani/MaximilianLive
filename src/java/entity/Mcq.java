@@ -6,11 +6,15 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import static javax.persistence.TemporalType.DATE;
 
 /**
  *
@@ -18,7 +22,7 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Mcq implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,6 +35,11 @@ public class Mcq implements Serializable {
     private String ans_c;
     private String ans_d;
     private String ans_correct;
+    @Temporal(DATE)
+    private java.util.Date startDate;
+    @Temporal(TemporalType.TIME)
+    private Date startTime;
+    private int duration;
 
     public Long getMcqId() {
         return mcqId;
@@ -39,7 +48,7 @@ public class Mcq implements Serializable {
     public void setMcqId(Long mcqId) {
         this.mcqId = mcqId;
     }
-    
+
     public Seminar getSeminar() {
         return seminar;
     }
@@ -96,7 +105,32 @@ public class Mcq implements Serializable {
         this.ans_correct = ans_correct;
     }
 
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
     
+    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -121,5 +155,5 @@ public class Mcq implements Serializable {
     public String toString() {
         return "entity.Mcq[ id=" + seminar + " ]";
     }
-    
+
 }
