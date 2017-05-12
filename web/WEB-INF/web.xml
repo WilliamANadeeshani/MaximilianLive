@@ -84,6 +84,10 @@
         <servlet-name>SetTimePageView</servlet-name>
         <servlet-class>web.home.speaker.mcq.SetTimePageView</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FeedbackSpeaker</servlet-name>
+        <servlet-class>web.home.speaker.FeedbackSpeaker</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -167,6 +171,10 @@
     <servlet-mapping>
         <servlet-name>SetTimePageView</servlet-name>
         <url-pattern>/SetTimePageView</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FeedbackSpeaker</servlet-name>
+        <url-pattern>/FeedbackSpeaker</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

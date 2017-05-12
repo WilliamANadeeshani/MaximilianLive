@@ -112,7 +112,7 @@
                                     Now you can see you students' feedback. It shows overall feedback with the percentage. 
                                 </div><br>        
                                 <div class="mdl-card__actions mdl-card--border">
-                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#">
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="FeedbackSpeaker">
                                         Learn More
                                     </a>
                                 </div>

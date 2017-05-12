@@ -23,6 +23,8 @@ public class Seminar implements Serializable {
     private List<Mcq> mcq;
     @OneToMany(mappedBy = "seminar", fetch = FetchType.EAGER)
     private List<Question> question;
+    @OneToMany(mappedBy = "seminar")
+    private List<Student> student;
 
     public Long getEventId() {
         return eventId;
@@ -72,7 +74,13 @@ public class Seminar implements Serializable {
         this.question = question;
     }
 
-    
+    public List<Student> getStudent() {
+        return student;
+    }
+
+    public void setStudent(List<Student> student) {
+        this.student = student;
+    }
 
     @Override
     public int hashCode() {
