@@ -88,6 +88,14 @@
         <servlet-name>FeedbackSpeaker</servlet-name>
         <servlet-class>web.home.speaker.FeedbackSpeaker</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewMcq</servlet-name>
+        <servlet-class>web.home.student.ViewMcq</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AnswerMcq</servlet-name>
+        <servlet-class>web.home.student.AnswerMcq</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -175,6 +183,14 @@
     <servlet-mapping>
         <servlet-name>FeedbackSpeaker</servlet-name>
         <url-pattern>/FeedbackSpeaker</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewMcq</servlet-name>
+        <url-pattern>/ViewMcq</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AnswerMcq</servlet-name>
+        <url-pattern>/AnswerMcq</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

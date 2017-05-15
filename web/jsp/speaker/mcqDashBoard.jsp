@@ -44,7 +44,7 @@
             <br/><br/><br/><br/>
             <div class="row">
                 <div class="col s2"></div>
-                <div class="col s2">
+                <div class="col s3">
                     <div class="card">
                         <div class="card-content">
                             <div class="mdl-card__title">
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s2">
+                <div class="col s3">
                     <div class="card">
                         <div class="card-content">
                             <div class="mdl-card__title">
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s2">
+                <div class="col s3">
                     <div class="card">
                         <div class="card-content">
                             <div class="mdl-card__title">
@@ -90,24 +90,6 @@
                             <div class="mdl-card__actions mdl-card--border">
                                 <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="ViewAllMcqToStart">
                                     Add Time
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col s2">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="mdl-card__title">
-                                <h5 class="mdl-card__title-text">Result</h5>
-                            </div>
-                            <div class="mdl-card__supporting-text">
-                                Now you can check your account Details and change your personal information.
-                            </div><br>        
-                            <div class="mdl-card__actions mdl-card--border">
-                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="jsp/speaker/accountDetails.jsp">
-                                    Your Profile
                                 </a>
                             </div>
                         </div>

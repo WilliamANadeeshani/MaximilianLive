@@ -115,8 +115,8 @@
                                     Now you can measure your awareness about the event by submitting answer for the MCQ s which were asked by lecturer.  .
                                 </div><br>        
                                 <div class="mdl-card__actions mdl-card--border">
-                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#">
-                                        Learn More
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="ViewMcq">
+                                        Try Challenges
                                     </a>
                                 </div>
                             </div><br>

@@ -1,0 +1,25 @@
+SMAP
+mcqOneQuestion_jsp.java
+JSP
+*S JSP
+*F
++ 0 mcqOneQuestion.jsp
+jsp/student/mcqOneQuestion.jsp
+*L
+1,6:73
+6:216,6
+6:80
+7:235,6
+7:83
+8:254,13
+8,7:86
+15:93,4
+16,75:97
+90:287,11
+91,2:298
+92:334,5
+92,2:302
+94:304,3
+95,3:307
+97,25:174
+*E

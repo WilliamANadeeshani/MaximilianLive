@@ -68,7 +68,7 @@
                                     </a>
                                 </div>
                             </div>
-                            
+
                             <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                                 <div class="mdl-card__media">
                                     <img class="article-image" src="resources/img/speakerDashBoard/eventDetails.jpg" border="0" alt="">
@@ -103,6 +103,22 @@
                             </div>
                             <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                                 <div class="mdl-card__media">
+                                    <img class="article-image" src="resources/img/pencil.jpg" border="0" alt="">
+                                </div>
+                                <div class="mdl-card__title">
+                                    <h2 class="mdl-card__title-text">Student Marks</h2>
+                                </div>
+                                <div class="mdl-card__supporting-text">
+                                    Now you can check your students' performance for your MCQ s with overall percentage. 
+                                </div><br>       
+                                <div class="mdl-card__actions mdl-card--border">
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#">
+                                        View Result
+                                    </a>
+                                </div>
+                            </div><br>
+                            <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
+                                <div class="mdl-card__media">
                                     <img class="article-image" src="resources/img/feedback.jpg" border="0" alt="">
                                 </div>
                                 <div class="mdl-card__title">
@@ -133,22 +149,7 @@
                                     </a>
                                 </div>
                             </div><br>    
-                            <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
-                                <div class="mdl-card__media">
-                                    <img class="article-image" src="resources/img/pencil.jpg" border="0" alt="">
-                                </div>
-                                <div class="mdl-card__title">
-                                    <h2 class="mdl-card__title-text">Student Marks</h2>
-                                </div>
-                                <div class="mdl-card__supporting-text">
-                                    Now you can check your students' performance for your MCQ s with overall percentage. 
-                                </div><br>       
-                                <div class="mdl-card__actions mdl-card--border">
-                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#">
-                                        Learn More
-                                    </a>
-                                </div>
-                            </div><br>    
+
                         </div>
                     </div>
                 </div>

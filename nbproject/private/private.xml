@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/src/java/web/home/speaker/FeedbackSpeaker.java</file>
+            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/web/jsp/student/mcq.jsp</file>
             <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/web/jsp/student/vote.jsp</file>
-            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/src/java/web/home/student/Vote.java</file>
-            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/src/java/web/home/student/ViewFeedback.java</file>
-            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/web/jsp/speaker/feedback.jsp</file>
+            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/src/java/web/home/student/ViewMcq.java</file>
+            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/src/java/entity/Mcq.java</file>
+            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/web/jsp/student/mcqOneQuestion.jsp</file>
+            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/web/jsp/home/speakerDashBoard.jsp</file>
         </group>
     </open-files>
 </project-private>
