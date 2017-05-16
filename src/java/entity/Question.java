@@ -68,8 +68,6 @@ public class Question implements Serializable, Comparable{
         this.votedStudents = votedStudents;
     }
 
-    
-
     public void addVotedQuestion(StudentVote sv){
         this.votedStudents.add(sv);
     }

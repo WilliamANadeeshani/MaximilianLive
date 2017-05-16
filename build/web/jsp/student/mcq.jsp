@@ -1,3 +1,4 @@
+<%@page import="entity.Mcq"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -45,9 +46,7 @@
                 request.onreadystatechange = function () {
                     if (request.readyState == 4) {
                         if (request.status == 200) {
-                            var output = request.responseText;
-                            alert(output);
-//                            window.location.replace('Vote');
+                            window.location.replace('jsp/student/mcqOneQuestion.jsp');
                         }
                     }
                 };
@@ -86,11 +85,12 @@
                                 <p>
                                 <table>
                                     <tbody>
-                                        <c:forEach items="${questionArray}" var="question">
+                                        
+                                        <c:forEach items="${mcq}" var="mcq">
                                             <tr>
-                                                <td><c:out value="${question.getQuestion()}" /><td>
+                                                <td><c:out value="${mcq.getQuestion()}" /><td>
                                                 <td> 
-                                                    <button class="btn waves-effect waves-light" onclick="setAnswer(${question.getMcqId()})">Try The Answer</button>
+                                                    <button class="btn waves-effect waves-light" onclick="setAnswer(${mcq.getMcqId()})">Add Your Answer</button>
                                                 </td>
                                             </tr>
                                         </c:forEach>

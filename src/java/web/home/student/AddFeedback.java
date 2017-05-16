@@ -50,9 +50,17 @@ public class AddFeedback extends HttpServlet {
                 feedback.setFeedback(feedbackString);
                 feedback.setFaceType(face);
                 feedback.setStudent(student);
+                student.setFeedback(feedback);
                 hibernateSession.saveOrUpdate(feedback);
+                hibernateSession.saveOrUpdate(student);
+
                 tx.commit();
                 hibernateSession.close();
+            } else {
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Session Is Expired...');");
+                out.println("location='jsp/home/studentLogin.jsp';");
+                out.println("</script>");
             }
         } finally {
             out.close();

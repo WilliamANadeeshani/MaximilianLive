@@ -42,67 +42,9 @@
             }
         </script>
 
-        <!--Ajax-->
-        <script type="text/javascript">
-            function createXMLHttpRequest() {
-                var xmlhttp;
-                if (window.XMLHttpRequest) {
-                    xmlhttp = new XMLHttpRequest();
-                } else {
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                return xmlhttp;
-            }
-            function sendRequest() {
-                var face = 0;
-                var feedback = document.getElementById('feedback').value;
-                if (document.getElementById('1').checked) {
-                    face = document.getElementById('1').value;
-                }
-                if (document.getElementById('2').checked) {
-                    face = document.getElementById('2').value;
-                }
-                if (document.getElementById('3').checked) {
-                    face = document.getElementById('3').value;
-                }
-                if (document.getElementById('4').checked) {
-                    face = document.getElementById('4').value;
-                }
-                if (document.getElementById('5').checked) {
-                    face = document.getElementById('5').value;
-                }
-                var url = "AddFeedback?feedback=" + feedback + "&face=" + face;
-                var request = createXMLHttpRequest();
-                request.open("GET", url, true);
-                request.send(null);
-                request.onreadystatechange = function () {
-                    if (request.readyState == 4) {
-                        if (request.status == 200) {
-                            document.getElementById('feedback').disabled = true;
-                            document.getElementById('update').style.visibility = "hidden";
-                            document.getElementById("1").disabled = true;
-                            document.getElementById("2").disabled = true;
-                            document.getElementById("3").disabled = true;
-                            document.getElementById("4").disabled = true;
-                            document.getElementById("5").disabled = true;
-                            alert("Successfully added your feedback")
-                        }
-                    }
-                };
-            }
-            function visibleUpdateButton() {
-                document.getElementById("update").style.visibility = "visible";
-                document.getElementById("1").disabled = false;
-                document.getElementById("2").disabled = false;
-                document.getElementById("3").disabled = false;
-                document.getElementById("4").disabled = false;
-                document.getElementById("5").disabled = false;
-            }
-        </script>
     </head>
     <body class="indigo darken-1">
         <%
-            String f = "fsdfds";
             Mcq mcq = (Mcq) session.getAttribute("mcq");
             if (mcq != null) {
                 String question = mcq.getQuestion();
@@ -116,7 +58,6 @@
                 pageContext.setAttribute("b", b);
                 pageContext.setAttribute("c", c);
                 pageContext.setAttribute("d", d);
-                pageContext.setAttribute("f", f);
                 pageContext.setAttribute("correct", correct);
             }
 
@@ -138,9 +79,9 @@
                     </ul>
                 </div>
             </nav>
-            <div class="row">
-                <div class="col s3"></div>
+            <form action="SaveAnswer"  method="GET" >
                 <div class="row">
+                    <div class="col s3"></div>
                     <div class="col s6">
                         <div class="card">
                             <div class="card-image">
@@ -148,50 +89,78 @@
                                 <span class="card-title">MCQ</span>
                             </div>
                             <div class="card-content">
-                                <p>
                                 <div class="input-field row">
                                     <div class="col s10">
                                         <i class="material-icons prefix">work</i>
-                                        <input disabled  id="feedback" type="text"  class="validate" required name="feedback" value="${pageScope.question}"/>
+                                        <input disabled  id="feedback" type="text"  class="validate" required name="" value="${pageScope.question}"/>
                                         <label   for="icon_prefix" class="active" data-error="Use at most 50 characters">Question</label>
                                     </div>
-
                                 </div>
-                                <div id="face">
+
+                                <div id='ans'>
                                     <div class="input-field row">
                                         <br>
                                         <div class="col s10">
                                             <p>
-                                                <input name="group1" type="radio" id="a" name='face' value="a" disabled="disabled"/>
-                                                <label for="a" >${f}</label>
+                                                <input  type="radio" id="a" name='ans'value="a"/>
+                                                <label for="a"><c:out value="${pageScope.a}" /></label>
                                             </p>
                                         </div>
                                     </div>
 
+                                    <div class="input-field row">
+                                        <br>
+                                        <div class="col s10">
+                                            <p>
+                                                <input  type="radio" id="b" name='ans' value="b" />
+                                                <label for="b"><c:out value="${pageScope.b}" /></label>
+                                            </p>
+                                        </div>
+                                    </div>
 
+                                    <div class="input-field row">
+                                        <br>
+                                        <div class="col s10">
+                                            <p>
+                                                <input type="radio" id="c" name='ans' value="c"/>
+                                                <label for="c"><c:out value="${pageScope.c}" /></label>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-field row">
+                                        <br>
+                                        <div class="col s10">
+                                            <p>
+                                                <input  type="radio" id="d" name='ans' value="d" />
+                                                <label for="d"><c:out value="${pageScope.d}" /></label>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card-action center-align">
-                                <button id="update" onclick="sendRequest();" class="btn waves-effect waves-purple" type="submit" name="action" style="visibility: hidden">Submit
-                                </button>
+
+                                <div class="card-action center-align">
+                                    <button id="update" onclick="sendRequest();" class="btn waves-effect waves-purple" type="submit" name="action">Submit
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col s3"></div>
+                </div>
+            </form>
+        </main>
+        <footer class="page-footer  grey darken-3">
+            <div class="footer-copyright">
+                <div class="container">
+                    <div class="mdl-logo" >&copy; WIlliam A Nadeeshani 2017</div>
                 </div>
             </div>
-            <div class="col s3"></div>
-        </div>
-    </main>
-    <footer class="page-footer  grey darken-3">
-        <div class="footer-copyright">
-            <div class="container">
-                <div class="mdl-logo" >&copy; WIlliam A Nadeeshani 2017</div>
-            </div>
-        </div>
-    </footer>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> 
-</body>
+        </footer>
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> 
+    </body>
 </html>
 
 

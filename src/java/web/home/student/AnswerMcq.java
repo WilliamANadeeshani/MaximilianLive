@@ -38,9 +38,7 @@ public class AnswerMcq extends HttpServlet {
             Mcq mcq = (Mcq) hibernateSession.get(Mcq.class, id);
             if (seminar != null) {
                 if (student != null) {
-                    request.setAttribute("mcq", mcq);
-                    RequestDispatcher rd = request.getRequestDispatcher("jsp/student/mcqOneQuestion.jsp");
-                    rd.forward(request, response);
+                    httpSession.setAttribute("mcq", mcq);
                     tx.commit();
                     hibernateSession.close();
 

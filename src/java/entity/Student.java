@@ -22,12 +22,16 @@ public class Student implements Serializable {
     private Long studentId;
     private String username;
     private String password;
+    
     @ManyToOne
     private Seminar seminar;
+    
     @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
     private List<StudentVote> votedQuesions = new ArrayList<StudentVote>();
+    
     @OneToOne (mappedBy = "student")
     private Feedback feedback;
+    
     
     public Long getStudentId() {
         return studentId;

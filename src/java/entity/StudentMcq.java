@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package entity;
 
 import java.io.Serializable;
@@ -17,7 +13,7 @@ import javax.persistence.ManyToOne;
  * @author William A Nadeeshani
  */
 @Entity
-public class StudentVote implements Serializable {
+public class StudentMcq implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -28,9 +24,10 @@ public class StudentVote implements Serializable {
     private Student student;
 
     @ManyToOne
-    private Question question;
-
-
+    private Mcq mcq;
+    
+    private String result;
+    
     public Long getId() {
         return id;
     }
@@ -47,15 +44,23 @@ public class StudentVote implements Serializable {
         this.student = student;
     }
 
-    public Question getQuestion() {
-        return question;
+    public Mcq getMcq() {
+        return mcq;
     }
 
-    public void setQuestion(Question question) {
-        this.question = question;
+    public void setMcq(Mcq mcq) {
+        this.mcq = mcq;
     }
 
-   
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -66,10 +71,10 @@ public class StudentVote implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof StudentVote)) {
+        if (!(object instanceof StudentMcq)) {
             return false;
         }
-        StudentVote other = (StudentVote) object;
+        StudentMcq other = (StudentMcq) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -78,9 +83,7 @@ public class StudentVote implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.StudentVote[ id=" + id + " ]";
+        return "entity.StudentMcq[ id=" + id + " ]";
     }
-
     
-
 }

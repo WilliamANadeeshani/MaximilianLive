@@ -96,6 +96,10 @@
         <servlet-name>AnswerMcq</servlet-name>
         <servlet-class>web.home.student.AnswerMcq</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SaveAnswer</servlet-name>
+        <servlet-class>web.home.student.SaveAnswer</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -191,6 +195,10 @@
     <servlet-mapping>
         <servlet-name>AnswerMcq</servlet-name>
         <url-pattern>/AnswerMcq</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SaveAnswer</servlet-name>
+        <url-pattern>/SaveAnswer</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
