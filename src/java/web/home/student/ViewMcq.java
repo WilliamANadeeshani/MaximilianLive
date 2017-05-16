@@ -41,10 +41,11 @@ public class ViewMcq extends HttpServlet {
             if (seminar != null) {
                 if (student != null) {
                     List mcq_list = hibernateSession.createCriteria(Mcq.class).list();
-//                    Set<Object> mcq_list = new HashSet<Object>(list);
+                    int size = mcq_list.size();
                     List<Mcq> mcq = new ArrayList<Mcq>();
-                    for (Object o : mcq_list) {
-                        Mcq q = (Mcq) o;
+                    List<Object> test = new ArrayList<Object>();
+                    for (int i=0; i<size/2; i++) {
+                        Mcq q = (Mcq) mcq_list.get(i);
                         System.out.println(q.getQuestion());
                         if (q.getSeminar().getEventId().equals(seminar.getEventId())) {
                             mcq.add(q);
