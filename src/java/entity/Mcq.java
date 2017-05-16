@@ -39,12 +39,8 @@ public class Mcq implements Serializable {
     private String ans_c;
     private String ans_d;
     private String ans_correct;
-    @Temporal(DATE)
-    private java.util.Date startDate;
-    @Temporal(TemporalType.TIME)
-    private Date startTime;
-    private int duration;
-    
+    private int correctStudentCount = 0;
+    private int wrongStudentCount= 0;
 
     public Long getMcqId() {
         return mcqId;
@@ -110,32 +106,23 @@ public class Mcq implements Serializable {
         this.ans_correct = ans_correct;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public int getCorrectStudentCount() {
+        return correctStudentCount;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setCorrectStudentCount(int correctStudentCount) {
+        this.correctStudentCount = correctStudentCount;
     }
 
-    public Date getStartTime() {
-        return startTime;
+    public int getWrongStudentCount() {
+        return wrongStudentCount;
     }
 
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
+    public void setWrongStudentCount(int wrongStudentCount) {
+        this.wrongStudentCount = wrongStudentCount;
     }
 
     
-
     @Override
     public int hashCode() {
         int hash = 0;

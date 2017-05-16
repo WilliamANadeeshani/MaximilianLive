@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/web/jsp/student/mcq.jsp</file>
-            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/src/java/web/home/student/ViewMcq.java</file>
+            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/web/jsp/speaker/mcqresult.jsp</file>
+            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/src/java/web/home/speaker/mcqResult.java</file>
+            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/src/java/web/home/student/SaveAnswer.java</file>
+            <file>file:/D:/Sem-5/08.%20Software%20Engineering%20Project%20(2)/MaximilianLiveSystem/MaximilianLive/src/java/entity/Mcq.java</file>
         </group>
     </open-files>
 </project-private>

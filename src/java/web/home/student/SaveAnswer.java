@@ -14,11 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -66,18 +64,24 @@ public class SaveAnswer extends HttpServlet {
                     sm.setStudent(student);
                     if (ans.equals(mcq.getAns_correct())) {
                         sm.setResult("c");
+                        int correctCount = sm.getMcq().getCorrectStudentCount();
+                        sm.getMcq().setCorrectStudentCount(correctCount + 1);
                         out.println("<script type=\"text/javascript\">");
                         out.println("alert('Your Answer Is Correct...');");
                         out.println("location='ViewMcq';");
                         out.println("</script>");
                     } else {
                         sm.setResult("w");
+                        int wrongCount = sm.getMcq().getWrongStudentCount();
+                        sm.getMcq().setWrongStudentCount(wrongCount + 1);
+                        hibernateSession.saveOrUpdate(sm.getMcq());
                         out.println("<script type=\"text/javascript\">");
                         out.println("alert('Your Answer Is Wrong...');");
                         out.println("location='ViewMcq';");
                         out.println("</script>");
                     }
                     hibernateSession.saveOrUpdate(sm);
+                    hibernateSession.saveOrUpdate(sm.getMcq());
                     tx.commit();
                     hibernateSession.close();
                 }

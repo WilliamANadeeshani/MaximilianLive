@@ -7,9 +7,7 @@ import entity.Student;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.CriteriaSpecification;
 
 /**
  *
@@ -40,18 +39,14 @@ public class ViewMcq extends HttpServlet {
             //check session is expired or not
             if (seminar != null) {
                 if (student != null) {
-                    List mcq_list = hibernateSession.createCriteria(Mcq.class).list();
-                    int size = mcq_list.size();
+                    List mcq_list = hibernateSession.createCriteria(Mcq.class).setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY).list();
                     List<Mcq> mcq = new ArrayList<Mcq>();
-                    List<Object> test = new ArrayList<Object>();
-                    for (int i=0; i<size/2; i++) {
-                        Mcq q = (Mcq) mcq_list.get(i);
-                        System.out.println(q.getQuestion());
+                    for (Object o : mcq_list) {
+                        Mcq q = (Mcq) o;
                         if (q.getSeminar().getEventId().equals(seminar.getEventId())) {
                             mcq.add(q);
                         }
                     }
-                    System.out.println(mcq.size());
                     request.setAttribute("mcq", mcq);
                     RequestDispatcher rd = request.getRequestDispatcher("jsp/student/mcq.jsp");
                     rd.forward(request, response);
