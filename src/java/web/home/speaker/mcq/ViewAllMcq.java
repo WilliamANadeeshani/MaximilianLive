@@ -16,13 +16,14 @@ import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.CriteriaSpecification;
 
 /**
  *
  * @author William A Nadeeshani
  */
 public class ViewAllMcq extends HttpServlet {
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -31,14 +32,14 @@ public class ViewAllMcq extends HttpServlet {
             SessionFactory factory = new HibernateUtil().createSessionFactory();
             Session hibernateSession = factory.openSession();
             Transaction tx = hibernateSession.beginTransaction();
-            
             HttpSession httpSession = request.getSession();
             Seminar seminar = (Seminar) httpSession.getAttribute("seminar");
             //check sesson is expired or not
+
             if (seminar != null) {
-                List list = hibernateSession.createCriteria(Mcq.class).list();
+                List list = hibernateSession.createCriteria(Mcq.class).setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY).list();
                 List<Mcq> mcqArray = new ArrayList<Mcq>();
-                for (int i = 0; i < list.size() / 2; i++) {
+                for (int i = 0; i < list.size(); i++) {
                     Mcq m = (Mcq) list.get(i);
                     if (m.getSeminar().getEventId().equals(seminar.getEventId())) {
                         mcqArray.add(m);

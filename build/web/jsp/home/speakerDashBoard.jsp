@@ -129,7 +129,7 @@
                                 </div><br>        
                                 <div class="mdl-card__actions mdl-card--border">
                                     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="FeedbackSpeaker">
-                                        Learn More
+                                        View Feedback
                                     </a>
                                 </div>
                             </div><br>    
@@ -144,8 +144,8 @@
                                     Now you can see, all the questions asked by your audience with number of votes.
                                 </div><br>        
                                 <div class="mdl-card__actions mdl-card--border">
-                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="Vote">
-                                        Learn More
+                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="VoteSpeaker">
+                                        View Question
                                     </a>
                                 </div>
                             </div><br>    

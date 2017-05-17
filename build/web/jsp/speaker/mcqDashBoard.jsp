@@ -78,23 +78,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s3">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="mdl-card__title">
-                                <h5 class="mdl-card__title-text">Start </h5>
-                            </div>
-                            <div class="mdl-card__supporting-text">
-                                Now you can display your added question to the audience and set time duration to the question.
-                            </div><br>        
-                            <div class="mdl-card__actions mdl-card--border">
-                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="ViewAllMcqToStart">
-                                    Add Time
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="col s2"></div>
             </div>
         </main>

@@ -1,7 +1,6 @@
 package web.home.student;
 
 import config.HibernateUtil;
-import entity.Feedback;
 import entity.Mcq;
 import entity.Seminar;
 import entity.Student;
@@ -54,6 +53,7 @@ public class SaveAnswer extends HttpServlet {
                             out.println("</script>");
                             tx.commit();
                             hibernateSession.close();
+                            break;
                         }
                     }
                 }
@@ -66,6 +66,7 @@ public class SaveAnswer extends HttpServlet {
                         sm.setResult("c");
                         int correctCount = sm.getMcq().getCorrectStudentCount();
                         sm.getMcq().setCorrectStudentCount(correctCount + 1);
+                        sm.getMcq().setTotal(sm.getMcq().getTotal() + 1);
                         out.println("<script type=\"text/javascript\">");
                         out.println("alert('Your Answer Is Correct...');");
                         out.println("location='ViewMcq';");
@@ -74,14 +75,14 @@ public class SaveAnswer extends HttpServlet {
                         sm.setResult("w");
                         int wrongCount = sm.getMcq().getWrongStudentCount();
                         sm.getMcq().setWrongStudentCount(wrongCount + 1);
-                        hibernateSession.saveOrUpdate(sm.getMcq());
+                        sm.getMcq().setTotal(sm.getMcq().getTotal() + 1);
                         out.println("<script type=\"text/javascript\">");
                         out.println("alert('Your Answer Is Wrong...');");
                         out.println("location='ViewMcq';");
                         out.println("</script>");
                     }
-                    hibernateSession.saveOrUpdate(sm);
-                    hibernateSession.saveOrUpdate(sm.getMcq());
+                    hibernateSession.merge(sm);
+                    hibernateSession.merge(sm.getMcq());
                     tx.commit();
                     hibernateSession.close();
                 }

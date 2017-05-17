@@ -3,7 +3,6 @@ package web.home.speaker;
 import config.HibernateUtil;
 import entity.Feedback;
 import entity.Seminar;
-import entity.Student;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -17,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.CriteriaSpecification;
 
 /**
  *
@@ -29,50 +29,32 @@ public class FeedbackSpeaker extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            SessionFactory factory = new HibernateUtil().createSessionFactory();
-            Session hibernateSession = factory.openSession();
-            Transaction tx = hibernateSession.beginTransaction();
             HttpSession httpSession = request.getSession();
             Seminar seminar = (Seminar) httpSession.getAttribute("seminar");
             if (seminar != null) {
-                List list = hibernateSession.createCriteria(Student.class).list();
-                    List< String> feedback = new ArrayList<String>();
-                    int[] faceCount = new int[]{0,0,0,0};
-                    
-                    for (Object o:list) {
-                        Student s = (Student)o;
-                        if (s.getSeminar().getEventId().equals( seminar.getEventId())) {
-                            if (s.getFeedback() != null) {
-                                feedback.add(s.getFeedback().getFeedback());
-                                String ft = s.getFeedback().getFaceType();
-                                if (ft.equals("1")) {
-                                    faceCount[0]=faceCount[0]+1;
-                                }else if(ft.equals("2")){
-                                    faceCount[1]=faceCount[1]+1;
-                                }else if(ft.equals("3")){
-                                    faceCount[2]=faceCount[2]+1;
-                                }else if(ft.equals("4")){
-                                    faceCount[3]=faceCount[3]+1;
-                                }else{
-                                    faceCount[4]=faceCount[4]+1;
-                                }
-                            }
-                        }
+                SessionFactory factory = new HibernateUtil().createSessionFactory();
+                Session hibernateSession = factory.openSession();
+                Transaction tx = hibernateSession.beginTransaction();
+                List feedBackAray = hibernateSession.createCriteria(Feedback.class).setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY).list();
+                List<Feedback> feedbacks = new ArrayList<Feedback>();
+                for (int i = 0; i < feedBackAray.size(); i++) {
+                    Feedback feedback = (Feedback) feedBackAray.get(i);
+                    if (feedback.getStudent().getSeminar().getEventId().equals(seminar.getEventId())) {
+                        feedbacks.add(feedback);
+                        
                     }
-                    request.setAttribute("feedback", feedback);
-                    request.setAttribute("faceCount", faceCount);
-                    RequestDispatcher rd = request.getRequestDispatcher("jsp/speaker/feedback.jsp");
-                    rd.forward(request, response);
-                    tx.commit();
-                    hibernateSession.close();
+                }
+                request.setAttribute("seminar", seminar);
+                
+                request.setAttribute("stringFeedbacks", feedbacks);
+                RequestDispatcher rd = request.getRequestDispatcher("jsp/speaker/feedback.jsp");
+                rd.forward(request, response);
             } else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Session is expired...Login Again...');");
                 out.println("location='jsp/home/speakerLogin.jsp';");
                 out.println("</script>");
             }
-            tx.commit();
-            hibernateSession.close();
 
         } finally {
             out.close();

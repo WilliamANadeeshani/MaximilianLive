@@ -73,18 +73,6 @@
         <servlet-class>web.home.speaker.mcq.UpdateMcq</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ViewAllMcqToStart</servlet-name>
-        <servlet-class>web.home.speaker.mcq.ViewAllMcqToStart</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SetTime</servlet-name>
-        <servlet-class>web.home.speaker.mcq.SetTime</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SetTimePageView</servlet-name>
-        <servlet-class>web.home.speaker.mcq.SetTimePageView</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>FeedbackSpeaker</servlet-name>
         <servlet-class>web.home.speaker.FeedbackSpeaker</servlet-class>
     </servlet>
@@ -103,6 +91,10 @@
     <servlet>
         <servlet-name>mcqResult</servlet-name>
         <servlet-class>web.home.speaker.mcqResult</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VoteSpeaker</servlet-name>
+        <servlet-class>web.home.speaker.VoteSpeaker</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
@@ -177,18 +169,6 @@
         <url-pattern>/UpdateMcq</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ViewAllMcqToStart</servlet-name>
-        <url-pattern>/ViewAllMcqToStart</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SetTime</servlet-name>
-        <url-pattern>/SetTime</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SetTimePageView</servlet-name>
-        <url-pattern>/SetTimePageView</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>FeedbackSpeaker</servlet-name>
         <url-pattern>/FeedbackSpeaker</url-pattern>
     </servlet-mapping>
@@ -207,6 +187,10 @@
     <servlet-mapping>
         <servlet-name>mcqResult</servlet-name>
         <url-pattern>/mcqResult</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VoteSpeaker</servlet-name>
+        <url-pattern>/VoteSpeaker</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

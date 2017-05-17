@@ -11,7 +11,7 @@
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-            <title>Vote</title>
+            <title>Feedback</title>
             <base href="${fn:substring(url, 0, fn:length(url) - fn:length(uri))}${req.contextPath}/" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -34,12 +34,12 @@
                     <ul class="right hide-on-med-and-down">
                         <li><a href="jsp/home/speakerDashBoard.jsp">Dash Board</a></li>
                         <li><a href="jsp/home/about.jsp">About</a></li>
-                        <li><a href="jsp/student/feedback.jsp">Vote</a></li>
+                        <li><a href="jsp/student/feedback.jsp">Feedback</a></li>
                     </ul>
                     <ul id="nav-mobile" class="side-nav">
                         <li><a href="jsp/home/speakerDashBoard.jsp">Dash Board</a></li>
                         <li><a href="jsp/home/about.jsp">About</a></li>
-                        <li><a href="jsp/student/feedback.jsp">Vote</a></li>
+                        <li><a href="jsp/student/feedback.jsp">Feedback</a></li>
                     </ul>
                 </div>
             </nav>
@@ -50,17 +50,45 @@
                         <div class="card">
                             <div class="card-image">
                                 <img src="resources/img/register.jpg"/>
-                                <span class="card-title">Vote</span>
+                                <span class="card-title">Feedback</span>
                             </div>
                             <div class="card-content">
                                 <p>
+                                <div class="row">
+                                    <div class="col s2">
+                                        <label><img src="resources/img/faces/01.jpg" class="circle responsive-img" /></label>
+                                        <input type="button" value="${seminar.getFace1()}">
+                                    </div>
+                                    <div class="col s2">
+                                        <label><img src="resources/img/faces/02.jpg" class="circle responsive-img" /></label>
+                                        <input type="button" value="${seminar.getFace2()}">
+                                    </div> 
+                                    <div class="col s2">
+                                        <label><img src="resources/img/faces/03.jpg" class="circle responsive-img" /></label>
+                                        <input type="button" value="${seminar.getFace3()}">
+                                    </div> 
+                                    <div class="col s2">
+                                        <label><img src="resources/img/faces/04.jpg" class="circle responsive-img" /></label>
+                                        <input type="button" value="${seminar.getFace4()}">
+                                    </div> 
+                                    <div class="col s2">
+                                        <label><img src="resources/img/faces/05.jpg" class="circle responsive-img" /></label>
+                                        <input type="button" value="${seminar.getFace5()}">
+                                    </div>
+                                    <div class="col s2">
+                                        <label>Total:</label>
+                                        <input type="button" value="${seminar.getFace1()+seminar.getFace2()+seminar.getFace3()+seminar.getFace4()+seminar.getFace5()}">
+                                    </div>
+                                </div>
+                                <br><br>
+                                <h5>Feedbacks:</h5>
                                 <table>
                                     <tbody>
-                                        <c:forEach items="${feedback}" var="feedback">
+                                        <c:forEach items="${stringFeedbacks}" var="string">
                                             <tr>
-                                                <td><c:out value="${feedback}" /><td>
+                                                <td><c:out value="${string.getFeedback()}" /><td>
                                             </tr>
-                                        </c:forEach>
+                                        </c:forEach> 
                                     </tbody>
                                 </table>
                             </div>

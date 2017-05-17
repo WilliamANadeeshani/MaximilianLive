@@ -41,7 +41,7 @@ public class Mcq implements Serializable {
     private String ans_correct;
     private int correctStudentCount = 0;
     private int wrongStudentCount= 0;
-
+    private int total = 0;
     public Long getMcqId() {
         return mcqId;
     }
@@ -122,6 +122,13 @@ public class Mcq implements Serializable {
         this.wrongStudentCount = wrongStudentCount;
     }
 
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
     
     @Override
     public int hashCode() {

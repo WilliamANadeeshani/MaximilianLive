@@ -46,6 +46,35 @@ public class AddFeedback extends HttpServlet {
                 Feedback feedback = student.getFeedback();
                 if (feedback == null) {
                     feedback = new Feedback();
+                } else {
+                    String faceAdded = feedback.getFaceType();
+                    if (faceAdded.equals("1")) {
+                        seminar.setFace1(seminar.getFace1()- 1);
+                    } else if (faceAdded.equals("2")) {
+                        seminar.setFace2(seminar.getFace2()- 1);
+                    } else if (faceAdded.equals("3")) {
+                        seminar.setFace3(seminar.getFace3()- 1);
+                    } else if (faceAdded.equals("4")) {
+                        seminar.setFace4(seminar.getFace4()- 1);
+                    } else if (faceAdded.equals("5")) {
+                        seminar.setFace5(seminar.getFace5()- 1);
+                    } 
+                }
+                if (face.equals("1")) {
+                    seminar.setFace1(seminar.getFace1()+ 1);
+                } else if (face.equals("2")) {
+                    seminar.setFace2(seminar.getFace2()+ 1);
+                } else if (face.equals("3")) {
+                    seminar.setFace3(seminar.getFace3()+ 1);
+                } else if (face.equals("4")) {
+                    seminar.setFace4(seminar.getFace4()+ 1);
+                } else if (face.equals("5")) {
+                    seminar.setFace5(seminar.getFace5()+ 1);
+                } else {
+                    out.println("<script type=\"text/javascript\">");
+                    out.println("alert('Add Your Face Feedback...');");
+                    out.println("location='jsp/home/studentLogin.jsp';");
+                    out.println("</script>");
                 }
                 feedback.setFeedback(feedbackString);
                 feedback.setFaceType(face);
@@ -53,6 +82,7 @@ public class AddFeedback extends HttpServlet {
                 student.setFeedback(feedback);
                 hibernateSession.saveOrUpdate(feedback);
                 hibernateSession.saveOrUpdate(student);
+                hibernateSession.saveOrUpdate(seminar);
 
                 tx.commit();
                 hibernateSession.close();

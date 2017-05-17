@@ -164,7 +164,7 @@
                                         <div class="col s2">
                                             <p>
                                                 <input name="group1" type="radio" id="2" name='face' value="2" disabled="disabled"/>
-                                                <label for="2"><img src="resources/img/faces/02.jpg" class="circle responsive-img" /></label>
+                                                <label for="2"><img src="resources/img/faces/02.jpg" class="circle responsive-img"/></label>
                                             </p>
                                         </div>
                                         <div class="col s2">

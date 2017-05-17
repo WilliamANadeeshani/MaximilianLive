@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -25,10 +26,11 @@
         </style>
     </head>
     <body class="indigo darken-1">
+        
         <main>
             <nav class=" indigo darken-2" role="navigation">
                 <div class="nav-wrapper container">
-                    <a id="logo-container" href="#" class="brand-logo">Your Profile</a>
+                    <a id="logo-container" href="#" class="brand-logo">Result</a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="jsp/home/speakerDashBoard.jsp">Dash Board</a></li>
                         <li><a href="jsp/home/about.jsp">About</a></li>
@@ -42,22 +44,34 @@
                 </div>
             </nav>
             <div class="row">
-                <div class="col s3"></div>
+                <div class="col s2"></div>
                 <div class="row">
-                    <div class="col s6">
+                    <div class="col s8">
                         <div class="card">
                             <div class="card-image">
                                 <img src="resources/img/register.jpg"/>
                                 <span class="card-title">Vote</span>
                             </div>
                             <div class="card-content">
-                                <p>
-                                <table>
-                                    <tbody>
-                                        <c:forEach items="${result}" var="result">
-                                            <tr>
-                                                <td><c:out value="" /><td>
 
+                                <table>
+                                    <thead>
+                                        <%--<c:forEach items="${eventMcq}" var="mcq">--%>
+                                            <tr>
+                                                <th>Question</th>
+                                                <th># Correct Students</th>
+                                                <th># Wrong Students</th>
+                                                <th># Total </th>
+                                            </tr>
+                                        <%--</c:forEach>--%>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach items="${eventMcq}" var="mcq">
+                                            <tr>
+                                                <td><c:out value="${mcq.getQuestion()}" /></td>
+                                                <td><c:out value="${mcq.getCorrectStudentCount()}" /></td>
+                                                <td><c:out value="${mcq.getWrongStudentCount()}" /></td>
+                                                <td><c:out value="${mcq.getTotal()}" /></td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>
@@ -65,7 +79,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col s3"></div>
+                    <div class="col s2"></div>
                 </div>
             </div>
             <!--</form>-->

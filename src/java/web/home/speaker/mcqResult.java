@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package web.home.speaker;
 
 import config.HibernateUtil;
@@ -13,13 +8,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -42,31 +36,25 @@ public class mcqResult extends HttpServlet {
             HttpSession httpSession = request.getSession();
             Seminar seminar = (Seminar) httpSession.getAttribute("seminar");
             if (seminar != null) {
-                List studentMcq = hibernateSession.createCriteria(StudentMcq.class).setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY).list();
-                System.out.println("**"+studentMcq.size());
-                List<Mcq> answerSet = new ArrayList<Mcq>();
-                for (int i = 0; i < studentMcq.size(); i++) {
-                    StudentMcq sm = (StudentMcq) studentMcq.get(i);
-                    Mcq mcq = sm.getMcq();
-                    if (!answerSet.contains(mcq)) {
-                        
+                List mcqArray = hibernateSession.createCriteria(Mcq.class).setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY).list();
+                List<Mcq> eventMcq = new ArrayList<Mcq>();
+                for (int i = 0; i < mcqArray.size(); i++) {
+                    Mcq mcq = (Mcq) mcqArray.get(i);
+                    if (mcq.getSeminar().getEventId().equals(seminar.getEventId())) {
+                        eventMcq.add(mcq);
                     }
-//                    if (mcq.getSeminar().getEventId().equals(seminar.getEventId())) {
-//                        if (!mcqArray.contains(sm)) {
-//                            list.add(data);
-//                        }
-//                        mcqArray.add(mcq);
-//                    }
                 }
-
+                request.setAttribute("eventMcq", eventMcq);
+                RequestDispatcher rd = request.getRequestDispatcher("jsp/speaker/mcqresult.jsp");
+                rd.forward(request, response);
+                tx.commit();
+                hibernateSession.close();
             } else {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Session is expired...Login Again...');");
                 out.println("location='jsp/home/speakerLogin.jsp';");
                 out.println("</script>");
             }
-
-            out.print("Success");
         } finally {
             out.close();
         }
